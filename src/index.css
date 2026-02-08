@@ -1,0 +1,9 @@
+/* src/index.css */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
+}

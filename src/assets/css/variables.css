@@ -1,0 +1,37 @@
+/* /assets/css/variables.css */
+:root {
+  /* Brand Colors - Image 4 참조 (블루 계열) */
+  --color-primary: #0055ff; /* 메인 블루 */
+  --color-primary-dark: #003399; /* 호버링 시 블루 */
+  --color-secondary: #1a1a1a; /* 본문 텍스트 (거의 블랙) */
+  --color-gray-100: #f5f5f5; /* 배경용 연회색 */
+  --color-gray-300: #e0e0e0; /* 라인 구분선 */
+  --color-gray-500: #9e9e9e; /* 보조 텍스트 */
+  --color-white: #ffffff;
+  --color-error: #ff4444; /* 폼 에러 메시지 */
+
+  /* Typography - 가독성 및 국문/영문 혼용 최적화 */
+  --font-main:
+    "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic",
+    sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+
+  /* Spacing System - 일관된 여백 */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-16: 4rem; /* 64px */
+
+  /* Layout */
+  --container-width: 1200px;
+  --header-height: 80px;
+}

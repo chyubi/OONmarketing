@@ -1,0 +1,141 @@
+/* Reviews.css */
+
+/* 전체 섹션 (흰색 배경) */
+.reviews-section {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 120px 0; /* 상하 여백 넉넉하게 */
+  color: #111;
+}
+
+/* 중앙 정렬 컨테이너 */
+.reviews-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 80px; /* 좌우 간격 */
+}
+
+/* === 왼쪽 스타일 (이미지) === */
+.reviews-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-bubble-img {
+  width: 100%;
+  max-width: 450px; /* 이미지 너무 커지지 않게 제한 */
+  height: auto;
+  opacity: 0.9; /* 살짝 부드러운 느낌 */
+}
+
+/* === 오른쪽 스타일 (리스트) === */
+.reviews-right {
+  flex: 1.2; /* 텍스트 영역을 조금 더 넓게 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 개별 리뷰 아이템 */
+.review-item {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+.review-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* 리뷰 제목 (직함) */
+.review-role {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 15px;
+}
+
+/* 리뷰 본문 */
+.review-content {
+  font-size: 0.95rem;
+  color: #666; /* 회색 텍스트 */
+  line-height: 1.6;
+  margin-bottom: 20px;
+  word-break: keep-all; /* 한글 줄바꿈 최적화 */
+}
+
+/* 리뷰 하단 (날짜, 좋아요) */
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* 좋아요 버튼 스타일 */
+.review-likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 4px 10px;
+  background-color: #fff;
+
+  font-size: 0.85rem;
+  color: #555;
+  cursor: default; /* 클릭 기능 없으므로 커서 유지 */
+}
+
+.heart-icon {
+  color: #ff4d7e; /* 핑크색 하트 */
+  font-size: 1rem;
+  line-height: 1;
+  margin-top: 1px; /* 시각적 보정 */
+}
+
+/* === 반응형 (모바일/태블릿) === */
+@media (max-width: 1024px) {
+  .reviews-container {
+    flex-direction: column; /* 세로 정렬 */
+    gap: 60px;
+  }
+
+  .reviews-left,
+  .reviews-right {
+    width: 100%;
+    flex: none;
+  }
+
+  .chat-bubble-img {
+    max-width: 300px; /* 모바일에서 이미지 크기 축소 */
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-container {
+    padding: 0 20px;
+  }
+
+  .review-role {
+    font-size: 1rem;
+  }
+
+  .review-content {
+    font-size: 0.9rem;
+  }
+}

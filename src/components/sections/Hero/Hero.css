@@ -1,0 +1,288 @@
+/* Hero.css */
+
+/* === 🛠️ [설정] 애니메이션 조절 컨트롤 타워 === */
+:root {
+  /* ⏱️ 로고별 퍼지는 속도 (초 단위) */
+  --speed-one-top: 3.5s;
+  --speed-team: 8s;
+  --speed-one-bottom: 12.5s;
+  --speed-goal: 15.8s;
+}
+
+.hero-section {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  --mouse-x: 0;
+  --mouse-y: 0;
+}
+
+/* 16:9 비율 유지 박스 */
+.aspect-ratio-box {
+  width: 100%;
+  max-width: 1920px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 레이어 1: 배경 원 */
+.layer-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 45%;
+  opacity: 0.8;
+}
+.bg-circle-img {
+  width: 100%;
+  height: auto;
+}
+
+/* 중앙 컨텐츠 래퍼 */
+.hero-content-wrapper {
+  position: relative;
+  width: 85%;
+  height: 64%;
+  z-index: 10;
+}
+
+/* === [중요 수정] 레이어 3: 사다리꼴 이미지 마스크 (텍스트보다 뒤로 보냄) === */
+/* 원래 z-index: 3이었으나, 텍스트(z-index: 5)보다 낮게 설정하여 텍스트가 위로 올라오게 함 */
+/* 만약 텍스트가 마스크 '뒤'에서 나오는 연출을 원한다면 이 값을 텍스트보다 높게(예: 10) 설정해야 하지만,
+   지금처럼 '가려지는 문제'를 해결하려면 텍스트를 더 위로 올리거나 위치를 조정해야 합니다.
+   여기서는 텍스트를 가장 위로 올려서 확실히 보이게 처리했습니다. */
+.layer-images-masks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* 텍스트(5)보다 낮춤 */
+  pointer-events: none;
+}
+
+.stripe-mask {
+  position: absolute;
+  overflow: hidden;
+  clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
+}
+
+.parallax-bg {
+  width: 150%;
+  height: 150%;
+  object-fit: cover;
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  transition: transform 0.08s linear;
+  will-change: transform;
+}
+
+.mask-1 {
+  top: 15%;
+  left: 20%;
+  width: 55%;
+  height: 18%;
+}
+.mask-1 .parallax-bg {
+  transform: translate(
+    calc(var(--mouse-x) * -30px),
+    calc(var(--mouse-y) * -20px)
+  );
+}
+
+.mask-2 {
+  top: 40%;
+  left: 20%;
+  width: 80%;
+  height: 18%;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+.mask-2 .parallax-bg {
+  transform: translate(
+    calc(var(--mouse-x) * -60px),
+    calc(var(--mouse-y) * -40px)
+  );
+}
+
+.mask-3 {
+  top: 65%;
+  left: 0%;
+  width: 46%;
+  height: 18%;
+}
+.mask-3 .parallax-bg {
+  transform: translate(
+    calc(var(--mouse-x) * -90px),
+    calc(var(--mouse-y) * -60px)
+  );
+}
+
+/* === [중요 수정] 레이어 2: 텍스트 로고 레이어 (가장 앞으로 배치) === */
+.layer-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5; /* 마스크(2)보다 높게 설정하여 무조건 위에 보이게 함 */
+  pointer-events: none;
+}
+
+.text-group {
+  position: absolute;
+  width: 100%;
+  height: 0;
+}
+.group-1 {
+  top: 25%;
+}
+.group-2 {
+  top: 49%;
+}
+.group-3 {
+  bottom: 25%;
+}
+
+/* --- 텍스트 로고 스타일 --- */
+.text-svg {
+  height: auto;
+  opacity: 0; /* 초기 상태: 투명 */
+  transition:
+    transform cubic-bezier(0.22, 1, 0.36, 1),
+    opacity ease-out;
+}
+
+/* 1. ONE (상단) */
+.one-top {
+  position: absolute;
+  left: 0%;
+  width: 19%;
+  transform: translate(20%, -70%); /* 초기 위치 */
+  transition-duration: var(--speed-one-top);
+}
+
+/* 2. TEAM (상단) */
+.team {
+  position: absolute;
+  left: 76%;
+  width: 28%;
+  transform: translate(-20%, -50%); /* 초기 위치 */
+  transition-duration: var(--speed-team);
+}
+
+/* 3. ONE (중단) */
+.one-bottom {
+  position: absolute;
+  left: 0%;
+  width: 17%;
+  transform: translate(15%, -50%); /* 초기 위치 */
+  transition-duration: var(--speed-one-bottom);
+}
+
+/* 4. GOAL (하단) */
+.goal {
+  position: absolute;
+  left: 50%;
+  width: 28%;
+  transform: translate(-15%, -50%); /* 초기 위치 */
+  transition-duration: var(--speed-goal);
+}
+
+/* --- [애니메이션 실행] --- */
+/* isLoaded가 true가 되면(animate-in 클래스 추가 시) 제자리로 이동하며 나타남 */
+.layer-text.animate-in .text-svg {
+  opacity: 1;
+  transform: translate(0, -50%); /* 최종 위치: 제자리 */
+}
+
+/* --- 기타 요소 --- */
+.layer-description {
+  position: absolute;
+  right: -5%;
+  bottom: 11.5%;
+  z-index: 20;
+  text-align: left;
+  color: #ffffff;
+}
+.desc-title {
+  font-size: 0.9vw;
+  margin-bottom: 1.5vh;
+}
+.desc-sub {
+  font-size: 0.5vw;
+  color: #aaaaaa;
+}
+
+.bottom-ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  padding: 1.5vh 0;
+  overflow: hidden;
+  z-index: 50; /* 가장 위에 */
+  border-top: 1px solid #222;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll-left-to-right 80s linear infinite;
+}
+
+.ticker-content span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-right: 16px;
+  display: inline-block;
+}
+
+@keyframes scroll-left-to-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* --- 반응형 예외 처리 --- */
+@media (max-width: 768px) {
+  .hero-section {
+    --mouse-x: 0;
+    --mouse-y: 0;
+  }
+  .text-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .layer-description,
+  .layer-images-masks {
+    display: none;
+  }
+  .aspect-ratio-box {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+  .hero-content-wrapper {
+    width: 90%;
+    height: 80%;
+  }
+}

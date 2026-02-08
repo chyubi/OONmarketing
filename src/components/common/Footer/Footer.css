@@ -1,0 +1,161 @@
+/* Footer.css */
+
+.footer-wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* === 1. 상단 CTA (이미지로 교체됨) === */
+
+/* 기존 텍스트 관련 스타일 (footer-top, sub-title, cta-row, cta-title, blue-highlight, cta-arrow) 모두 삭제 */
+
+/* [새로 추가] 이미지 래퍼 (클릭 영역 및 여백 담당) */
+.footer-cta-image-wrapper {
+  margin-bottom: 60px;
+  cursor: pointer;
+  /* 클릭 가능하다는 느낌을 주기 위한 호버 효과 (선택사항) */
+  transition: opacity 0.3s;
+}
+
+.footer-cta-image-wrapper:hover {
+  opacity: 0.8;
+}
+
+/* [새로 추가] 통 이미지 스타일 */
+.footer-cta-img {
+  width: 100%; /* 컨테이너 너비에 맞춤 */
+  height: auto;
+  display: block; /* 이미지 하단 여백 제거 */
+  /* SVG가 너무 커지는 것을 방지하고 싶다면 max-width 설정 (예: 800px) */
+  /* max-width: 800px; */
+}
+
+/* === 구분선 === */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  margin-bottom: 50px;
+}
+
+/* === 2. 하단 정보 영역 (기존 유지) === */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* 네비게이션 메뉴 */
+.footer-nav {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.f-link {
+  text-decoration: none;
+  color: #111;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+.f-link:hover {
+  opacity: 0.6;
+}
+
+/* 하단 정보 그리드 */
+.footer-info-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* 왼쪽 컬럼 (로고 + 주소) */
+.info-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* 로고 이미지 */
+.footer-logo-img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+/* 주소 및 카피라이트 텍스트 */
+.info-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.address {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555;
+}
+
+/* 오른쪽 컬럼 (연락처) */
+.info-right {
+  display: flex;
+  gap: 80px;
+}
+
+.info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* === 반응형 처리 === */
+/* 상단 CTA 관련 반응형 코드는 이미지가 알아서 줄어들므로 삭제 */
+
+@media (max-width: 768px) {
+  .footer-nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-info-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .info-right {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

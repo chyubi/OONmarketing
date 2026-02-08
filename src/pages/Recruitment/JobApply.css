@@ -1,0 +1,143 @@
+.apply-container {
+  padding: 160px 20px 100px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.apply-title {
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.apply-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.highlight {
+  color: #000;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: #fff;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+}
+
+.req {
+  color: #ff4d4f;
+  margin-left: 3px;
+}
+
+.helper {
+  font-size: 13px;
+  color: #888;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.agreement-box {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+.agreement-box label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn-cancel,
+.btn-submit {
+  flex: 1;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #555;
+}
+
+.btn-submit {
+  background: #000;
+  border: none;
+  color: #fff;
+}
+
+.btn-submit:hover {
+  background: #333;
+}
+/* ... 기존 스타일 유지 ... */
+
+.file-input-wrapper {
+  border: 1px dashed #ccc;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #fcfcfc;
+  transition: border-color 0.2s;
+}
+
+.file-input-wrapper:hover {
+  border-color: #000;
+  background-color: #fff;
+}
+
+/* 파일 인풋 기본 스타일 */
+input[type="file"] {
+  width: 100%;
+  font-size: 14px;
+  border: none !important; /* 기존 input 테두리 제거 */
+  padding: 0 !important;
+  background: transparent;
+}
+
+/* ... 나머지 스타일 유지 ... */

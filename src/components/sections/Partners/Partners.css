@@ -1,0 +1,168 @@
+/* Partners.css */
+
+.partners-section {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 120px 0;
+  color: #111111;
+  overflow: hidden; /* 가로 스크롤 방지 */
+}
+
+.partners-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+/* === 왼쪽 영역 스타일 (초기 상태: 투명 + 아래로 이동) === */
+.partners-left {
+  flex: 1;
+  opacity: 0;
+  transform: translateY(100px); /* 100px 아래에서 시작 */
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
+}
+
+/* [애니메이션 활성화] 제자리로 이동 */
+.partners-left.animate-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logo-wrapper {
+  margin-bottom: 20px;
+}
+.shopping-logo {
+  height: 28px;
+  width: auto;
+}
+
+.partners-headline {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.highlight {
+  color: #ff4d4d;
+}
+
+.intro-link {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #111;
+  text-decoration: none;
+  color: #111;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 50px;
+  transition: opacity 0.3s;
+}
+.intro-link:hover {
+  opacity: 0.7;
+}
+
+.partners-sub-desc {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 50px;
+}
+
+.consulting-btn {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.consulting-btn:hover {
+  border-color: #000;
+  background-color: #000;
+  color: #fff;
+}
+
+/* === 오른쪽 영역 스타일 (초기 상태: 투명 + 오른쪽으로 이동) === */
+.partners-right {
+  flex: 1;
+  padding-top: 20px;
+
+  opacity: 0;
+  transform: translateX(100px); /* 100px 오른쪽에서 시작 */
+  /* 왼쪽보다 0.2초 늦게 시작하여 순차적인 느낌 부여 */
+  transition:
+    opacity 1s ease-out 0.2s,
+    transform 1s ease-out 0.2s;
+}
+
+/* [애니메이션 활성화] 제자리로 이동 */
+.partners-right.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.feature-item {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #eee;
+}
+.feature-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.feature-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.feature-desc {
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* === 반응형 === */
+@media (max-width: 1024px) {
+  .partners-container {
+    flex-direction: column;
+    gap: 80px;
+  }
+  .partners-left,
+  .partners-right {
+    width: 100%;
+    flex: none;
+  }
+  .partners-headline {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-headline {
+    font-size: 2rem;
+  }
+  .feature-title {
+    font-size: 1.5rem;
+  }
+}

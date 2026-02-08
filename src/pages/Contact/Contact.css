@@ -1,0 +1,359 @@
+/* Contact.css */
+
+/* 1. 전체 페이지 레이아웃 (세로 배치) */
+.contact-full-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* === [위쪽] 파란색 영역 === */
+.contact-blue-zone {
+  flex: 1;
+  width: 100%;
+  background-color: #0033ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 16:9 비율 유지 박스 */
+.contact-layout-limit {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  max-width: 177.78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 헤더 */
+.contact-layout-limit > header {
+  flex-shrink: 0;
+  height: 10%;
+  min-height: 60px;
+  z-index: 10;
+}
+
+/* 메인 컨텐츠 */
+.contact-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+/* 배경 워터마크 */
+.bg-watermark-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+}
+.bg-watermark-img {
+  width: 80%;
+  height: auto;
+}
+
+/* 컨텐츠 내용 */
+.contact-content {
+  width: 100%;
+  max-width: 1400px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.contact-title {
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-weight: 600;
+  margin-bottom: 4vh;
+  margin-left: 5%;
+  text-align: left;
+}
+
+/* === [수정] 카드 컨테이너 === */
+.card-container {
+  display: flex;
+  gap: 40px;
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  align-items: stretch;
+
+  /* 위치 살짝 보정 */
+  transform: translateY(-20px);
+}
+
+/* === [수정 핵심] 카드 스타일 === */
+.contact-card {
+  flex: 1;
+
+  /* [변경] 기존 3/4에서 10/9로 변경하여 높이를 약 30% 축소 */
+  aspect-ratio: 10 / 9;
+
+  /* 최소 높이도 조금 줄여서 유연하게 대응 */
+  min-height: 200px;
+  max-height: 500px;
+
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 6% 8%;
+
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-card:hover {
+  transform: scale(1.02);
+  z-index: 2;
+}
+
+/* 텍스트 래퍼 */
+.card-text-wrapper {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 라벨 */
+.card-label {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+/* [수정] 메인 설명 텍스트 */
+.card-desc {
+  /* 높이가 줄었으므로 최대 폰트 사이즈를 2.5rem -> 2.2rem 정도로 약간 축소 */
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+/* 버튼 영역 */
+.card-btn-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+/* ========================================= */
+/* === [아래쪽] 흰색 푸터 영역 === */
+/* ========================================= */
+
+.footer-wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  color: #111;
+  display: flex;
+  justify-content: center;
+
+  /* 반응형 패딩 적용 */
+  padding: clamp(40px, 8vh, 100px) 0 clamp(30px, 5vh, 60px);
+
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 clamp(20px, 5%, 40px);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 5vh, 60px);
+}
+
+.footer-nav {
+  display: flex;
+  gap: clamp(20px, 3vw, 40px);
+  flex-wrap: wrap;
+}
+
+.f-link {
+  text-decoration: none;
+  color: #111;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+.f-link:hover {
+  opacity: 0.6;
+}
+
+.footer-info-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 40px);
+}
+
+.info-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.info-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.address {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555;
+}
+
+.info-right {
+  display: flex;
+  gap: clamp(40px, 6vw, 80px);
+}
+
+.info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* === 반응형 처리 === */
+
+/* 태블릿 이하 */
+@media (max-width: 1024px) {
+  .contact-title {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .card-container {
+    width: 95%;
+    gap: 20px;
+  }
+
+  .contact-card {
+    /* 모바일 진입 전에는 조금 더 정사각형에 가깝게 */
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* 모바일 (세로 모드) */
+@media (max-width: 768px) {
+  .contact-full-screen {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .contact-blue-zone {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 50px;
+  }
+
+  .contact-layout-limit {
+    aspect-ratio: unset;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .contact-main {
+    margin-top: 100px;
+  }
+
+  /* 카드 세로 배치 */
+  .card-container {
+    flex-direction: column;
+    height: auto;
+    transform: none;
+    margin-bottom: 50px;
+  }
+
+  .contact-card {
+    width: 100%;
+    /* 모바일에서는 다시 가로로 긴 형태 (16:9) */
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
+  }
+
+  .footer-wrapper {
+    padding: 40px 0 30px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-info-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .info-right {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

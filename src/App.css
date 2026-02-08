@@ -1,0 +1,15 @@
+/* src/App.css */
+
+/* 범인 제거 완료! 기본 설정 초기화 */
+#root {
+  width: 100%;
+  max-width: 100%; /* 너비 제한 해제 */
+  margin: 0;
+  padding: 0;
+  text-align: left; /* 기본 정렬 초기화 */
+}
+
+/* 모든 요소에 박스 크기 계산 방식 통일 */
+* {
+  box-sizing: border-box;
+}
