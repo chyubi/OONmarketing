@@ -176,111 +176,6 @@
   padding-top: 20px;
 }
 
-/* ========================================= */
-/* === [아래쪽] 흰색 푸터 영역 === */
-/* ========================================= */
-
-.footer-wrapper {
-  width: 100%;
-  background-color: #ffffff;
-  color: #111;
-  display: flex;
-  justify-content: center;
-
-  /* 반응형 패딩 적용 */
-  padding: clamp(40px, 8vh, 100px) 0 clamp(30px, 5vh, 60px);
-
-  flex-shrink: 0;
-  z-index: 20;
-}
-
-.footer-container {
-  width: 100%;
-  max-width: 1400px;
-  padding: 0 clamp(20px, 5%, 40px);
-}
-
-.footer-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(30px, 5vh, 60px);
-}
-
-.footer-nav {
-  display: flex;
-  gap: clamp(20px, 3vw, 40px);
-  flex-wrap: wrap;
-}
-
-.f-link {
-  text-decoration: none;
-  color: #111;
-  font-weight: 800;
-  font-size: 1rem;
-  transition: opacity 0.2s;
-}
-.f-link:hover {
-  opacity: 0.6;
-}
-
-.footer-info-grid {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: clamp(20px, 4vw, 40px);
-}
-
-.info-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.info-text-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.address {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #111;
-}
-
-.copyright {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #555;
-}
-
-.info-right {
-  display: flex;
-  gap: clamp(40px, 6vw, 80px);
-}
-
-.info-col {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.info-label {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.info-value {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #111;
-}
-
-/* === 반응형 처리 === */
-
 /* 태블릿 이하 */
 @media (max-width: 1024px) {
   .contact-title {
@@ -355,5 +250,142 @@
   .info-right {
     flex-direction: column;
     gap: 20px;
+  }
+}
+
+/* ... (위쪽 Contact 관련 스타일은 유지) ... */
+
+/* ========================================= */
+/* === [아래쪽] 흰색 푸터 영역 (Footer2 스타일 적용) === */
+/* ========================================= */
+
+.footer-contact-wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  color: #111;
+  display: flex;
+  justify-content: center;
+
+  /* [핵심] Footer2와 동일한 하단 여백 적용 */
+  padding-bottom: 100px;
+  /* 상단 여백이 필요하다면 추가 (예: padding-top: 60px;) */
+  padding-top: 60px;
+
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.footer-contact-container {
+  width: 100%;
+  /* Footer2와 동일한 너비 제한 */
+  max-width: 1100px;
+  padding: 0 40px; /* 좌우 여백 */
+}
+
+/* === 하단 정보 영역 (Footer2와 동일) === */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* 네비게이션 메뉴 */
+.footer-nav {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.f-link {
+  text-decoration: none;
+  color: #111;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+.f-link:hover {
+  opacity: 0.6;
+}
+
+/* 하단 정보 그리드 */
+.footer-info-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* 왼쪽 컬럼 (주소) */
+.info-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.info-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.address {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555;
+}
+
+/* 오른쪽 컬럼 (연락처) */
+.info-right {
+  display: flex;
+  gap: 80px;
+}
+
+.info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.info-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* === 반응형 처리 === */
+@media (max-width: 768px) {
+  .footer-contact-wrapper {
+    /* 모바일에서는 하단 여백 조금 줄이기 (선택사항) */
+    padding-bottom: 60px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-info-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .info-right {
+    flex-direction: column;
+    gap: 30px;
   }
 }

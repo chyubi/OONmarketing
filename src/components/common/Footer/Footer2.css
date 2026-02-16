@@ -1,19 +1,20 @@
-/* Footer.css */
+/* Footer2.css */
 
-.footer-wrapper {
+.footer2-wrapper {
   width: 100%;
   background-color: #ffffff;
   color: #111;
   display: flex;
   justify-content: center;
-  padding: 0 0 60px;
+
+  /* Footer2에만 적용하고 싶은 스타일 */
+  padding-bottom: 100px;
 }
 
-.footer-container {
+/* 나머지 내부 클래스들도 겹칠 위험이 있다면 앞에 .footer2-wrapper를 붙여주세요 */
+.footer2-wrapper .footer-container {
   width: 100%;
-  background-color: #ffffff;
-  max-width: 1400px;
-  padding: 0 40 0 0px;
+  max-width: 1100px;
 }
 
 /* === 1. 상단 CTA (이미지로 교체됨) === */
@@ -22,7 +23,6 @@
 
 /* [새로 추가] 이미지 래퍼 (클릭 영역 및 여백 담당) */
 .footer-cta-image-wrapper {
-  margin-bottom: 60px;
   cursor: pointer;
   /* 클릭 가능하다는 느낌을 주기 위한 호버 효과 (선택사항) */
   transition: opacity 0.3s;

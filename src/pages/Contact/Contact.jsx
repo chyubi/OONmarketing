@@ -85,8 +85,8 @@ export default function Contact() {
       </div>
 
       {/* === [아래쪽] 흰색 푸터 영역 === */}
-      <footer className="footer-wrapper">
-        <div className="footer-container">
+      <footer className="footer-contact-wrapper">
+        <div className="footer-contact-container">
           {/* 하단 정보 영역 */}
           <div className="footer-bottom">
             {/* 네비게이션 메뉴 */}

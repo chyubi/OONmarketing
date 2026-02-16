@@ -138,19 +138,28 @@ export default function Recruitment() {
               <div className="info-label">접수방법</div>
               <div className="info-content">
                 E-mail (
-                <a href="mailto:oon@oon-marketing.com">oon@oon-marketing.com</a>
+                <a href="mailto:oon@oon-marketing.com">
+                  https://oonmarketing-1ffd4.web.app/contact
+                </a>
                 ) 을 통한 온라인 입사지원
               </div>
             </div>
             <div className="info-row">
               <div className="info-label">문의사항</div>
-              <div className="info-content">010 ) 3323-4447</div>
+              <div className="info-content">010 ) 2376-3124</div>
             </div>
             <div className="info-row">
               <div className="info-label">유의사항</div>
               <div className="info-content">
                 접수 서류는 반환 하지 않으며 지원서 내용이 사실과 다를 경우
                 합격이 취소될 수 있습니다.
+              </div>
+            </div>
+            <div className="info-row">
+              <div className="info-label">근무조건</div>
+              <div className="info-content">
+                근무조건 및 채용절차 <br />
+                https://www.saramin.co.kr/zf_user/company-info/view?csn=aG42dUE3QS9EVmV6SzVOQXRtcUE1UT09&popup_yn=y
               </div>
             </div>
           </div>

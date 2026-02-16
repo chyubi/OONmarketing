@@ -284,8 +284,8 @@
     height: 50vh;
   }
   .orbit-ring {
-    width: 150vw;
-    height: 60vw;
+    width: 10vw;
+    height: 10vw;
   }
   .animate-active .ring-1 {
     top: 30%;
