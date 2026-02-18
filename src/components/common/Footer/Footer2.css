@@ -16,15 +16,10 @@
   padding: 0 40 0 0px;
 }
 
-/* === 1. 상단 CTA (이미지로 교체됨) === */
-
-/* 기존 텍스트 관련 스타일 (footer-top, sub-title, cta-row, cta-title, blue-highlight, cta-arrow) 모두 삭제 */
-
-/* [새로 추가] 이미지 래퍼 (클릭 영역 및 여백 담당) */
+/* === 1. 상단 CTA === */
 .footer-cta-image-wrapper {
   margin-bottom: 60px;
   cursor: pointer;
-  /* 클릭 가능하다는 느낌을 주기 위한 호버 효과 (선택사항) */
   transition: opacity 0.3s;
 }
 
@@ -32,13 +27,10 @@
   opacity: 0.8;
 }
 
-/* [새로 추가] 통 이미지 스타일 */
 .footer-cta-img {
-  width: 100%; /* 컨테이너 너비에 맞춤 */
+  width: 100%;
   height: auto;
-  display: block; /* 이미지 하단 여백 제거 */
-  /* SVG가 너무 커지는 것을 방지하고 싶다면 max-width 설정 (예: 800px) */
-  /* max-width: 800px; */
+  display: block;
 }
 
 /* === 구분선 === */
@@ -49,7 +41,7 @@
   margin-bottom: 50px;
 }
 
-/* === 2. 하단 정보 영역 (기존 유지) === */
+/* === 2. 하단 정보 영역 === */
 .footer-bottom {
   display: flex;
   flex-direction: column;
@@ -83,7 +75,7 @@
   gap: 40px;
 }
 
-/* 왼쪽 컬럼 (로고 + 주소) */
+/* 왼쪽 컬럼 */
 .info-left {
   display: flex;
   flex-direction: column;
@@ -91,14 +83,12 @@
   gap: 20px;
 }
 
-/* 로고 이미지 */
 .footer-logo-img {
   height: 24px;
   width: auto;
   display: block;
 }
 
-/* 주소 및 카피라이트 텍스트 */
 .info-text-group {
   display: flex;
   flex-direction: column;
@@ -117,7 +107,7 @@
   color: #555;
 }
 
-/* 오른쪽 컬럼 (연락처) */
+/* 오른쪽 컬럼 */
 .info-right {
   display: flex;
   gap: 80px;
@@ -142,12 +132,32 @@
 }
 
 /* === 반응형 처리 === */
-/* 상단 CTA 관련 반응형 코드는 이미지가 알아서 줄어들므로 삭제 */
-
 @media (max-width: 768px) {
+  /* [수정] 메뉴 가로 스크롤 (드래그) 구현 */
   .footer-nav {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;       /* 가로 정렬 유지 */
+    flex-wrap: nowrap;         /* 줄바꿈 방지 (한 줄로 쭉 나열) */
+    overflow-x: auto;          /* 내용이 넘칠 경우 가로 스크롤 허용 */
+    gap: 24px;                 /* 메뉴 간 간격 */
+    padding-bottom: 15px;      /* 스크롤바 공간 확보 및 시각적 여백 */
+    
+    /* 모바일에서 부드러운 스크롤 느낌 */
+    -webkit-overflow-scrolling: touch;
+    
+    /* 스크롤바 숨기기 (디자인적 통일감) */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+  /* 스크롤바 숨기기 (Chrome, Safari, Opera) */
+  .footer-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 메뉴 아이템이 줄어들지 않도록 고정 */
+  .f-link {
+    flex-shrink: 0; 
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
   }
 
   .footer-info-grid {

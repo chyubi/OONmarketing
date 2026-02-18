@@ -144,7 +144,7 @@ export default function Recruitment() {
             </div>
             <div className="info-row">
               <div className="info-label">문의사항</div>
-              <div className="info-content">010 ) 3323-4447</div>
+              <div className="info-content"> 010-9222-9265</div>
             </div>
             <div className="info-row">
               <div className="info-label">유의사항</div>

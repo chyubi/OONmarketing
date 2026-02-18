@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Hero.css";
 
-// 이미지 자산 Import
+// 이미지 자산 Import (경로 확인 필요)
 import bgCircle from "../../../assets/icons/Heoro-img/backgoround-circle.svg";
 import oneLogoTop from "../../../assets/icons/Heoro-img/ONE-LOGO.svg";
 import teamLogo from "../../../assets/icons/Heoro-img/TEAM,-LOGO.svg";
@@ -21,7 +21,6 @@ export default function Hero() {
   }, []);
 
   const handleMouseMove = (e) => {
-    // 1920x1080 비율 내에서의 상대 좌표 계산
     const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
     const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
     setMousePos({ x, y });
@@ -36,7 +35,6 @@ export default function Hero() {
         "--mouse-y": mousePos.y,
       }}
     >
-      {/* 16:9 비율을 유지하는 메인 컨테이너 */}
       <div className="aspect-ratio-box">
         {/* 레이어 1: 배경 원 */}
         <div className="layer-circle">
@@ -49,42 +47,27 @@ export default function Hero() {
 
         {/* 중앙 컨텐츠 래퍼 */}
         <div className="hero-content-wrapper">
-          {/* === 레이어 2: 텍스트 로고 === */}
+          {/* 레이어 2: 텍스트 로고 */}
           <div className={`layer-text ${isLoaded ? "animate-in" : ""}`}>
-            {/* Group 1 (상단) */}
             <div className="text-group group-1">
-              <img
-                src={oneLogoTop}
-                alt="ONE"
-                className="text-svg one-top move-left"
-              />
-              <img
-                src={teamLogo}
-                alt="TEAM,"
-                className="text-svg team move-right"
-              />
+              <img src={oneLogoTop} alt="ONE" className="text-svg one-top" />
+              <img src={teamLogo} alt="TEAM," className="text-svg team" />
             </div>
 
-            {/* Group 2 (중단) */}
             <div className="text-group group-2">
               <img
                 src={oneLogoBottom}
                 alt="ONE"
-                className="text-svg one-bottom move-left-from-mask"
+                className="text-svg one-bottom"
               />
             </div>
 
-            {/* Group 3 (하단) */}
             <div className="text-group group-3">
-              <img
-                src={goalLogo}
-                alt="GOAL"
-                className="text-svg goal move-right-from-mask"
-              />
+              <img src={goalLogo} alt="GOAL" className="text-svg goal" />
             </div>
           </div>
 
-          {/* === 레이어 3: 사다리꼴 이미지 마스크 === */}
+          {/* 레이어 3: 사다리꼴 이미지 마스크 */}
           <div className="layer-images-masks">
             <div className="stripe-mask mask-1">
               <img src={bgImg1} alt="Stripe 1" className="parallax-bg" />
@@ -105,14 +88,13 @@ export default function Hero() {
               성공시킵니다.
             </p>
             <p className="desc-sub">
-              기획 + 수행 + 분석을 한 흐름으로 설<br />
-              계해 전환 구조를 만듭니다.
+              기획 + 수행 + 분석을 한 흐름으로 설계해 전환 구조를 만듭니다.
             </p>
           </div>
         </div>
       </div>
 
-      {/* 하단 무한 롤링 티커 (화면 전체 기준 하단 고정) */}
+      {/* 하단 무한 롤링 티커 */}
       <div className="bottom-ticker">
         <div className="ticker-track">
           <div className="ticker-content">

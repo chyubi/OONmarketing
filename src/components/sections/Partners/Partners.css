@@ -7,7 +7,7 @@
   justify-content: center;
   padding: 120px 0;
   color: #111111;
-  overflow: hidden; /* 가로 스크롤 방지 */
+  overflow: hidden;
 }
 
 .partners-container {
@@ -20,17 +20,16 @@
   gap: 60px;
 }
 
-/* === 왼쪽 영역 스타일 (초기 상태: 투명 + 아래로 이동) === */
+/* === 왼쪽 영역 스타일 === */
 .partners-left {
   flex: 1;
   opacity: 0;
-  transform: translateY(100px); /* 100px 아래에서 시작 */
+  transform: translateY(100px);
   transition:
     opacity 1s ease-out,
     transform 1s ease-out;
 }
 
-/* [애니메이션 활성화] 제자리로 이동 */
 .partners-left.animate-up {
   opacity: 1;
   transform: translateY(0);
@@ -56,23 +55,70 @@
   color: #ff4d4d;
 }
 
-.intro-link {
+/* [수정] 기업 소개서 섹션 스타일 */
+.intro-section {
+  margin-bottom: 50px;
+}
+
+.intro-caption {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* [신규] 화려한 버튼 스타일 */
+.intro-link-btn {
   display: inline-flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 320px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #111;
+  padding: 18px 24px;
+  border: 2px solid #111;
+  border-radius: 4px;
   text-decoration: none;
   color: #111;
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 50px;
-  transition: opacity 0.3s;
+  font-weight: 800;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden; /* 배경 채우기 효과를 위해 필수 */
+  z-index: 1;
+  transition: color 0.4s ease;
 }
-.intro-link:hover {
-  opacity: 0.7;
+
+/* 버튼 내부 텍스트와 아이콘 (z-index로 배경 위에 올림) */
+.btn-text, .btn-icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* 배경 채우기 효과 (before 가상요소 사용) */
+.intro-link-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  transform: translateX(-100%); /* 초기 상태: 왼쪽 바깥으로 숨김 */
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); /* 부드러운 이징 함수 */
+  z-index: 0;
+}
+
+/* 호버 시 효과 */
+.intro-link-btn:hover::before {
+  transform: translateX(0); /* 배경이 왼쪽에서 오른쪽으로 채워짐 */
+}
+
+.intro-link-btn:hover {
+  color: #fff; /* 텍스트 색상 반전 */
+}
+
+.intro-link-btn:hover .btn-icon {
+  transform: translateX(5px); /* 화살표가 오른쪽으로 살짝 이동 */
 }
 
 .partners-sub-desc {
@@ -98,20 +144,18 @@
   color: #fff;
 }
 
-/* === 오른쪽 영역 스타일 (초기 상태: 투명 + 오른쪽으로 이동) === */
+/* === 오른쪽 영역 스타일 === */
 .partners-right {
   flex: 1;
   padding-top: 20px;
 
   opacity: 0;
-  transform: translateX(100px); /* 100px 오른쪽에서 시작 */
-  /* 왼쪽보다 0.2초 늦게 시작하여 순차적인 느낌 부여 */
+  transform: translateX(100px);
   transition:
     opacity 1s ease-out 0.2s,
     transform 1s ease-out 0.2s;
 }
 
-/* [애니메이션 활성화] 제자리로 이동 */
 .partners-right.animate-left {
   opacity: 1;
   transform: translateX(0);
@@ -155,6 +199,9 @@
   }
   .partners-headline {
     font-size: 2.5rem;
+  }
+  .intro-link-btn {
+    max-width: 100%;
   }
 }
 

@@ -11,12 +11,11 @@ export default function Partners() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // [수정] threshold를 0.5로 설정하여 섹션이 화면의 50% 이상 들어왔을 때 실행
         if (entry.isIntersecting) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.5 }, // 0.1(조금만 보여도) ~ 1.0(전부 다 보여야)
+      { threshold: 0.5 }
     );
 
     if (sectionRef.current) {
@@ -31,7 +30,7 @@ export default function Partners() {
   return (
     <section className="partners-section" ref={sectionRef}>
       <div className="partners-container">
-        {/* === 왼쪽 영역 (아래 -> 위) === */}
+        {/* === 왼쪽 영역 === */}
         <div className={`partners-left ${isVisible ? "animate-up" : ""}`}>
           <div className="logo-wrapper">
             <img
@@ -49,10 +48,16 @@ export default function Partners() {
             WITH <span className="highlight">AI LIVE</span> COMMERCE
           </h2>
 
-          <a href="#intro" className="intro-link">
-            <span className="link-text">OON 기업 소개서</span>
-            <span className="arrow-icon">→</span>
-          </a>
+          {/* [수정] 기업 소개서 섹션 - 문구 강화 및 디자인 변경 */}
+          <div className="intro-section">
+            <p className="intro-caption">
+              OON의 기술과 노하우를 한 눈에 확인하세요.
+            </p>
+            <a href="#intro" className="intro-link-btn">
+              <span className="btn-text">기업 소개서 확인하기</span>
+              <span className="btn-icon">→</span>
+            </a>
+          </div>
 
           <p className="partners-sub-desc">
             사람 쇼호스트가 아니어도
@@ -65,8 +70,9 @@ export default function Partners() {
           <button className="consulting-btn">AI 라이브 상담하기</button>
         </div>
 
-        {/* === 오른쪽 영역 (우 -> 좌) === */}
+        {/* === 오른쪽 영역 === */}
         <div className={`partners-right ${isVisible ? "animate-left" : ""}`}>
+          {/* ... (기존 코드 유지) ... */}
           <div className="feature-item">
             <h3 className="feature-title">대기업급 진행</h3>
             <p className="feature-desc">
@@ -77,7 +83,6 @@ export default function Partners() {
               사람 컨디션에 흔들리지 않습니다.
             </p>
           </div>
-
           <div className="feature-item">
             <h3 className="feature-title">반복 편성</h3>
             <p className="feature-desc">
@@ -88,7 +93,6 @@ export default function Partners() {
               '한 번 하고 끝'이 아니라, 운영됩니다.
             </p>
           </div>
-
           <div className="feature-item">
             <h3 className="feature-title">운영 효율</h3>
             <p className="feature-desc">
@@ -99,7 +103,6 @@ export default function Partners() {
               소상공인도 지속 가능한 구조를 만듭니다.
             </p>
           </div>
-
           <div className="feature-item">
             <h3 className="feature-title">매출 최적화</h3>
             <p className="feature-desc">

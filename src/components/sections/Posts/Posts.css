@@ -118,6 +118,17 @@
   margin-bottom: 15px;
   line-height: 1.4;
 }
+
+/* [추가] 뉴스 타이틀 링크 스타일 */
+.news-title a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 부모 색상(검정) 상속 */
+  transition: color 0.3s ease;
+}
+
+.news-title a:hover {
+  color: #0048fb; /* 마우스 올렸을 때 브랜드 색상으로 변경 (선택 사항) */
+}
 .news-desc {
   font-size: 1rem;
   color: #666;
