@@ -124,12 +124,6 @@ export default function Posts() {
               </li>
             ))}
           </ul>
-
-          <div className="more-btn-wrapper">
-            <a href="#more" className="more-link">
-              MORE &rarr;
-            </a>
-          </div>
         </div>
       </div>
     </section>

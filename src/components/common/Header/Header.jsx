@@ -14,15 +14,39 @@ import inquiry from "../../../assets/icons/Header-img/문의하기.svg";
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // 헤더 표시 여부 상태 (기본값: true - 보임)
+  const [isVisible, setIsVisible] = useState(true);
+
+  // 이전 스크롤 위치 저장용
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // 배경색 변경 여부 (맨 위가 아니면 배경색 입히기 위함)
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // 1. 헤더 보이기/숨기기 로직
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // 스크롤을 내리고 있고, 100px 이상 내려왔다면 -> 숨김
+        setIsVisible(false);
+      } else {
+        // 스크롤을 올리고 있거나, 맨 위에 있다면 -> 보임
+        setIsVisible(true);
+      }
+
+      // 2. 배경색 변경 로직 (50px 이상 내려오면 배경색 추가)
+      setIsScrolled(currentScrollY > 50);
+
+      // 현재 위치 저장
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   // [기능 1] 섹션 이동 (메인 페이지 내 스크롤)
   const handleScrollMove = (targetId) => {
@@ -45,7 +69,10 @@ export default function Header() {
   };
 
   return (
-    <header className={`header-wrapper ${isScrolled ? "scrolled" : ""}`}>
+    <header
+      // isVisible이 false면 'hidden' 클래스 추가
+      className={`header-wrapper ${isScrolled ? "scrolled" : ""} ${!isVisible ? "hidden" : ""}`}
+    >
       <div className="header-container">
         {/* 로고 */}
         <div
@@ -57,7 +84,6 @@ export default function Header() {
         </div>
 
         <nav className="header-nav">
-          {/* 1. 서비스 소개 */}
           <button
             className="nav-item"
             onClick={() => handleScrollMove("services")}
@@ -65,7 +91,6 @@ export default function Header() {
             <img src={serviceIcon} alt="서비스 소개" />
           </button>
 
-          {/* 2. AI 라이브커머스 */}
           <button
             className="nav-item"
             onClick={() => handleScrollMove("ai-live")}
@@ -73,7 +98,6 @@ export default function Header() {
             <img src={aiIcon} alt="AI 라이브커머스" />
           </button>
 
-          {/* 3. 포트폴리오 */}
           <button
             className="nav-item"
             onClick={() => handleScrollMove("portfolio")}
@@ -81,7 +105,6 @@ export default function Header() {
             <img src={portfolioIcon} alt="포트폴리오" />
           </button>
 
-          {/* 4. 고객경험 */}
           <button
             className="nav-item"
             onClick={() => handleScrollMove("customer-exp")}
@@ -89,12 +112,11 @@ export default function Header() {
             <img src={customerIcon} alt="고객경험" />
           </button>
 
-          {/* 5. 팀원소개 (메인 #team 섹션으로 스크롤) */}
           <button className="nav-item" onClick={() => handleScrollMove("team")}>
             <img src={teamIcon} alt="팀원소개" />
           </button>
 
-          {/* 6. 문의하기 (문의 페이지로 이동) */}
+          {/* 문의하기 버튼 (페이지 이동 함수 사용) */}
           <button
             className="nav-item"
             onClick={() => handlePageMove("/contact")}
