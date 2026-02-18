@@ -1,7 +1,7 @@
 import React from "react";
 import "./Posts.css";
 
-// === 1. 이미지 Asset Import (파일 트리 기준) ===
+// === 1. 이미지 Asset Import ===
 import hmparkImg from "../../../assets/images/business/박혜미.svg";
 import jhleeImg from "../../../assets/images/business/이정호.svg";
 import tgkimImg from "../../../assets/images/business/김태균.svg";
@@ -13,7 +13,7 @@ import newsImg2 from "../../../assets/images/business/2번뉴스.svg";
 import newsImg3 from "../../../assets/images/business/3번뉴스.svg";
 
 export default function Posts() {
-  // === 2. 데이터에 이미지 연결 ===
+  // === 2. 데이터 정의 ===
   const teamData = [
     {
       name: "박혜미",
@@ -54,6 +54,7 @@ export default function Posts() {
       desc: "진흥원은 전국 최초로 AI디지털 휴먼기술을 활용한 AI 쇼호스트를 제작해 라이브커머스로 상품을 판매할 예정이다.",
       meta: "정재훈 기자 │ 2024/11/13",
       image: newsImg1,
+      link: "https://www.etnews.com/20241101000043", // 추가된 링크
     },
     {
       id: 2,
@@ -61,6 +62,7 @@ export default function Posts() {
       desc: "경상북도경제진흥원과 경북 지역 중소기업 및 소상공인을 위한 업무협약을 체결했다고 22일 밝혔다.",
       meta: "조규덕 기자 │ 2024/07/19",
       image: newsImg2,
+      link: "https://www.imaeil.com/page/view/2024071917073428491", // 추가된 링크
     },
     {
       id: 3,
@@ -68,6 +70,7 @@ export default function Posts() {
       desc: "2026 마케팅 이슈 캘린더를 통해 매월 주목해야 할 마케팅 시점을 점검하시고, 연간 마케팅 플랜 수립은 물론...",
       meta: "나스미디어 │ 2025/12/23",
       image: newsImg3,
+      link: "https://www.nasmedia.co.kr/%EC%A0%95%EA%B8%B0%EB%B3%B4%EA%B3%A0%EC%84%9C/2025%EB%85%84-12%EC%9B%94-%ED%95%9C-%EC%9E%A5%EC%9D%B4%EB%A9%B4-%EA%B3%A0%EB%AF%BC-%EB%81%9D-2026-%EB%A7%88%EC%BC%80%ED%8C%85-%EC%9D%B4%EC%8A%88-%EC%BA%98%EB%A6%B0%EB%8D%94/", // 추가된 링크
     },
   ];
 
@@ -83,7 +86,6 @@ export default function Posts() {
               {teamData.map((member, index) => (
                 <li key={index} className="team-item">
                   <div className="member-avatar">
-                    {/* ★★★ 클래스 이름 확인: avatar-img ★★★ */}
                     <img
                       src={member.image}
                       alt={member.name}
@@ -109,12 +111,20 @@ export default function Posts() {
             {newsData.map((news) => (
               <li key={news.id} className="news-item">
                 <div className="news-text-group">
-                  <h3 className="news-title">{news.title}</h3>
+                  {/* [수정] 타이틀을 클릭 가능한 링크로 변경 */}
+                  <h3 className="news-title">
+                    <a 
+                      href={news.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      {news.title}
+                    </a>
+                  </h3>
                   <p className="news-desc">{news.desc}</p>
                   <span className="news-meta">{news.meta}</span>
                 </div>
                 <div className="news-thumbnail">
-                  {/* ★★★ 클래스 이름 확인: thumb-img ★★★ */}
                   <img
                     src={news.image}
                     alt={news.title}

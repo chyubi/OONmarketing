@@ -23,7 +23,7 @@ export default function Footer2() {
   };
 
   return (
-    <footer className="footer2-wrapper">
+    <footer className="footer-wrapper">
       <div className="footer-container">
         <div className="footer-divider"></div>
         <div className="footer-bottom">
@@ -85,12 +85,12 @@ export default function Footer2() {
             <div className="info-right">
               <div className="info-col">
                 <span className="info-label">Contact</span>
-                <span className="info-value">oonmarketing@naver.com</span>
+                <span className="info-value">contact@oon-marketing.com</span>
               </div>
               <div className="info-col">
                 <span className="info-label">Tel</span>
-                <span className="info-value">054</span>
-                <span className="info-value">010-2376-3124</span>
+                <span className="info-value">054-454-5777</span>
+                <span className="info-value"> 010-9222-9265</span>
               </div>
             </div>
           </div>

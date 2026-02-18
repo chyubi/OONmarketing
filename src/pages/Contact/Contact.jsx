@@ -132,7 +132,7 @@ export default function Contact() {
                 <div className="info-col">
                   <span className="info-label">Tel</span>
                   <span className="info-value">054-454-5777</span>
-                  <span className="info-value">010-3323-4447</span>
+                  <span className="info-value"> 010-9222-9265</span>
                 </div>
               </div>
             </div>
