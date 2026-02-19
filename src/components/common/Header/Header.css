@@ -106,14 +106,51 @@
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 0 20px;
+    padding: 0 15px; /* 좌우 패딩 조금 줄임 */
     height: 80px;
   }
+
+  /* [핵심 수정] 모바일에서 가로 스크롤 가능한 메뉴바 만들기 */
   .header-nav {
-    gap: 10px;
+    display: flex;
+    align-items: center;
+    
+    /* 1. 줄바꿈 방지 (한 줄로 나열) */
+    flex-wrap: nowrap; 
+    
+    /* 2. 가로 스크롤 허용 */
+    overflow-x: auto; 
+    
+    /* 3. 부드러운 스크롤 느낌 (iOS 대응) */
+    -webkit-overflow-scrolling: touch; 
+    
+    /* 4. 스크롤바 숨기기 (깔끔한 UI) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    gap: 15px; /* 메뉴 간 간격 */
+    
+    /* 5. 양옆 여백 (화면 끝에 닿지 않게) */
+    padding: 0 5px; 
   }
+
+  /* 4-1. 크롬/사파리 스크롤바 숨기기 */
+  .header-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 6. 메뉴 아이템이 줄어들지 않도록 고정 */
+  .nav-item {
+    flex-shrink: 0; /* 크기 유지 */
+  }
+
   .nav-item img {
-    max-height: 16px;
+    max-height: 18px;
+    width: auto;
+  }
+  
+  /* 로고 크기 조정 (필요 시) */
+  .header-logo img {
+    height: 28px;
   }
 }
 
