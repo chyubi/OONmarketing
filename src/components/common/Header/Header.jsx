@@ -15,32 +15,22 @@ export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // 헤더 표시 여부 상태 (기본값: true - 보임)
   const [isVisible, setIsVisible] = useState(true);
-
-  // 이전 스크롤 위치 저장용
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  // 배경색 변경 여부 (맨 위가 아니면 배경색 입히기 위함)
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // 1. 헤더 보이기/숨기기 로직
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // 스크롤을 내리고 있고, 100px 이상 내려왔다면 -> 숨김
         setIsVisible(false);
       } else {
-        // 스크롤을 올리고 있거나, 맨 위에 있다면 -> 보임
         setIsVisible(true);
       }
 
-      // 2. 배경색 변경 로직 (50px 이상 내려오면 배경색 추가)
       setIsScrolled(currentScrollY > 50);
-
-      // 현재 위치 저장
       setLastScrollY(currentScrollY);
     };
 
@@ -48,8 +38,8 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // [기능 1] 섹션 이동 (메인 페이지 내 스크롤)
   const handleScrollMove = (targetId) => {
+    setIsMobileMenuOpen(false);
     if (location.pathname === "/" || location.pathname === "") {
       const element = document.getElementById(targetId);
       if (element) {
@@ -62,15 +52,18 @@ export default function Header() {
     }
   };
 
-  // [기능 2] 페이지 이동
   const handlePageMove = (path) => {
+    setIsMobileMenuOpen(false);
     navigate(path);
     window.scrollTo(0, 0);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
   return (
     <header
-      // isVisible이 false면 'hidden' 클래스 추가
       className={`header-wrapper ${isScrolled ? "scrolled" : ""} ${!isVisible ? "hidden" : ""}`}
     >
       <div className="header-container">
@@ -83,7 +76,19 @@ export default function Header() {
           <img src={logoIcon} alt="OON Marketing" />
         </div>
 
-        <nav className="header-nav">
+        {/* 모바일 메뉴 버튼 (버튼 크기 키움) */}
+        <button 
+          className="mobile-menu-btn" 
+          onClick={toggleMobileMenu}
+          aria-label="메뉴 열기"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path>
+          </svg>
+        </button>
+
+        {/* 드롭다운 메뉴 (요청하신 내용 포함) */}
+        <nav className={`header-nav ${isMobileMenuOpen ? "open" : ""}`}>
           <button
             className="nav-item"
             onClick={() => handleScrollMove("services")}
@@ -111,7 +116,6 @@ export default function Header() {
           >
             <img src={customerIcon} alt="고객경험" />
           </button>
-
           <button className="nav-item" onClick={() => handleScrollMove("team")}>
             <img src={teamIcon} alt="팀원소개" />
           </button>

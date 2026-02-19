@@ -2,42 +2,29 @@
 
 /* 1. 전체 헤더 배경 */
 .header-wrapper {
-  /* --- [고정 위치 설정] --- */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-
-  /* [중요] 최상위 레이어 보장 */
   z-index: 9999;
-
-  /* 배경색 및 위치 이동 애니메이션 */
   transition:
     background-color 0.3s ease,
-    transform 0.3s ease-in-out; /* 위치 이동 부드럽게 */
-
-  background-color: transparent; /* 기본은 투명 */
-
-  /* 내부 컨텐츠 정렬 */
+    transform 0.3s ease-in-out;
+  background-color: transparent;
   display: flex;
   justify-content: center;
-
-  /* 기본 상태: 제자리 */
   transform: translateY(0);
 }
 
-/* [추가] 숨김 상태일 때 (위로 이동해서 안 보이게 함) */
 .header-wrapper.hidden {
   transform: translateY(-100%);
 }
 
-/* [기존 유지] 스크롤 되었을 때 배경색 변경 */
 .header-wrapper.scrolled {
   background-color: rgba(0, 0, 0, 0.9);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* 2. 컨텐츠 컨테이너 */
 .header-container {
   width: 100%;
   max-width: 1920px;
@@ -50,7 +37,6 @@
   box-sizing: border-box;
 }
 
-/* 3. 왼쪽 로고 영역 */
 .header-logo {
   min-width: 100px;
   flex-shrink: 0;
@@ -63,14 +49,12 @@
   cursor: pointer;
 }
 
-/* 4. 오른쪽 네비게이션 영역 */
 .header-nav {
   display: flex;
   align-items: center;
   gap: clamp(20px, 3vw, 40px);
 }
 
-/* 5. 메뉴 아이템 */
 .nav-item {
   background: none;
   border: none;
@@ -91,7 +75,20 @@
   max-height: 24px;
 }
 
-/* --- 📱 반응형 --- */
+/* 모바일 메뉴 토글 버튼 (기본 숨김) */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.mobile-menu-btn svg {
+  fill: #fff;
+}
+
+/* --- 반응형 --- */
 @media (max-width: 1200px) {
   .header-container {
     height: 100px;
@@ -106,55 +103,55 @@
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 0 15px; /* 좌우 패딩 조금 줄임 */
+    padding: 0 15px;
     height: 80px;
   }
 
-  /* [핵심 수정] 모바일에서 가로 스크롤 가능한 메뉴바 만들기 */
+  /* [수정] 모바일 메뉴 버튼 스타일 (크기 키움) */
+  .mobile-menu-btn {
+    display: block;
+    width: 40px;   /* 30px -> 40px로 확장 */
+    height: 40px;  /* 30px -> 40px로 확장 */
+    padding: 6px;  /* 내부 여백 추가 */
+  }
+
+  /* [수정] 드롭다운 메뉴 스타일 */
   .header-nav {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    max-width: 250px;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    display: none; /* 기본 숨김 */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 9998;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .header-nav.open {
     display: flex;
-    align-items: center;
-    
-    /* 1. 줄바꿈 방지 (한 줄로 나열) */
-    flex-wrap: nowrap; 
-    
-    /* 2. 가로 스크롤 허용 */
-    overflow-x: auto; 
-    
-    /* 3. 부드러운 스크롤 느낌 (iOS 대응) */
-    -webkit-overflow-scrolling: touch; 
-    
-    /* 4. 스크롤바 숨기기 (깔끔한 UI) */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    gap: 15px; /* 메뉴 간 간격 */
-    
-    /* 5. 양옆 여백 (화면 끝에 닿지 않게) */
-    padding: 0 5px; 
-  }
-
-  /* 4-1. 크롬/사파리 스크롤바 숨기기 */
-  .header-nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* 6. 메뉴 아이템이 줄어들지 않도록 고정 */
-  .nav-item {
-    flex-shrink: 0; /* 크기 유지 */
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .nav-item img {
-    max-height: 18px;
+    max-height: 20px;
     width: auto;
   }
   
-  /* 로고 크기 조정 (필요 시) */
   .header-logo img {
     height: 28px;
   }
 }
 
-/* 접근성 (SEO) */
 .sr-only {
   position: absolute;
   width: 1px;

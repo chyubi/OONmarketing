@@ -8,7 +8,7 @@
   justify-content: center;
 
   /* Footer2에만 적용하고 싶은 스타일 */
-  padding-bottom: 100px;
+  padding-bottom: 140px;
 }
 
 /* 나머지 내부 클래스들도 겹칠 위험이 있다면 앞에 .footer2-wrapper를 붙여주세요 */
@@ -45,7 +45,7 @@
 .footer-bottom {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 80px;
 }
 
 /* 네비게이션 메뉴 */
@@ -72,7 +72,8 @@
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 60px;
+  padding-bottom: 100px;
 }
 
 /* 왼쪽 컬럼 */
@@ -133,41 +134,57 @@
 
 /* === 반응형 처리 === */
 @media (max-width: 768px) {
-  /* [수정] 메뉴 가로 스크롤 (드래그) 구현 */
-  .footer-nav {
-    flex-direction: row;       /* 가로 정렬 유지 */
-    flex-wrap: nowrap;         /* 줄바꿈 방지 (한 줄로 쭉 나열) */
-    overflow-x: auto;          /* 내용이 넘칠 경우 가로 스크롤 허용 */
-    gap: 24px;                 /* 메뉴 간 간격 */
-    padding-bottom: 15px;      /* 스크롤바 공간 확보 및 시각적 여백 */
-    
-    /* 모바일에서 부드러운 스크롤 느낌 */
+  /* 메뉴 가로 스크롤 유지 */
+  .footer-bottom .footer-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 15px;
+    padding-bottom: 15px;
+    width: 100%;
     -webkit-overflow-scrolling: touch;
-    
-    /* 스크롤바 숨기기 (디자인적 통일감) */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin-left: 10px;
   }
 
-  /* 스크롤바 숨기기 (Chrome, Safari, Opera) */
-  .footer-nav::-webkit-scrollbar {
+  .footer-bottom .footer-nav::-webkit-scrollbar {
     display: none;
   }
 
-  /* 메뉴 아이템이 줄어들지 않도록 고정 */
   .f-link {
+    display: inline-block;
     flex-shrink: 0; 
-    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    white-space: nowrap;
+    font-size: 0.85rem;
   }
 
   .footer-info-grid {
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
+    margin-left: 20px;
   }
 
-  .info-right {
-    flex-direction: column;
-    gap: 30px;
+  /* [수정] 오른쪽 컬럼 위치 및 마진 조정 */
+  .footer-info-grid .info-right {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: baseline; 
+    justify-content: flex-start;
+    gap: 60px;
+    
+    /* [수정] 전체적으로 5px 오른쪽으로 이동 */
+    margin-left: 10px;
+  }
+
+  .footer-info-grid .info-col {
+    width: auto;
+    gap: 2px; /* 내부 간격 축소 */
   }
 }

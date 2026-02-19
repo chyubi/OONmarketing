@@ -26,7 +26,7 @@
 /* 16:9 비율 유지 박스 */
 .aspect-ratio-box {
   width: 100%;
-  max-width: 1920px;
+  max-width: 1630px; /* 1920px -> 1630px (약 15% 축소) */
   aspect-ratio: 16 / 9;
   position: relative;
   display: flex;
@@ -41,7 +41,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  width: 45%;
+  width: 38%; /* 45% -> 38% */
   opacity: 0.8;
 }
 .bg-circle-img {
@@ -52,8 +52,8 @@
 /* 중앙 컨텐츠 래퍼 */
 .hero-content-wrapper {
   position: relative;
-  width: 85%;
-  height: 64%;
+  width: 72%; /* 85% -> 72% */
+  height: 55%; /* 64% -> 55% */
   z-index: 10;
 }
 
@@ -89,8 +89,8 @@
 .mask-1 {
   top: 15%;
   left: 20%;
-  width: 55%;
-  height: 20%;
+  width: 47%; /* 55% -> 47% */
+  height: 17%; /* 20% -> 17% */
 }
 .mask-1 .parallax-bg {
   transform: translate(
@@ -102,8 +102,8 @@
 .mask-2 {
   top: 40%;
   left: 20%;
-  width: 80%;
-  height: 18%;
+  width: 68%; /* 80% -> 68% */
+  height: 15%; /* 18% -> 15% */
   clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
 .mask-2 .parallax-bg {
@@ -116,8 +116,8 @@
 .mask-3 {
   top: 65%;
   left: 0%;
-  width: 36%;
-  height: 20%;
+  width: 31%; /* 36% -> 31% */
+  height: 17%; /* 20% -> 17% */
 }
 .mask-3 .parallax-bg {
   transform: translate(
@@ -165,7 +165,7 @@
 .one-top {
   position: absolute;
   left: 0%;
-  width: 19%;
+  width: 16%; /* 19% -> 16% */
   transform: translate(20%, -70%); 
   transition-duration: var(--speed-one-top);
 }
@@ -174,7 +174,7 @@
 .team {
   position: absolute;
   left: 76%;
-  width: 28%;
+  width: 24%; /* 28% -> 24% */
   transform: translate(-20%, -50%); 
   transition-duration: var(--speed-team);
 }
@@ -183,7 +183,7 @@
 .one-bottom {
   position: absolute;
   left: 0%;
-  width: 17%;
+  width: 14.5%; /* 17% -> 14.5% */
   transform: translate(15%, -50%); 
   transition-duration: var(--speed-one-bottom);
 }
@@ -192,7 +192,7 @@
 .goal {
   position: absolute;
   left: 50%;
-  width: 28%;
+  width: 24%; /* 28% -> 24% */
   transform: translate(-15%, -50%); 
   transition-duration: var(--speed-goal);
 }
@@ -213,14 +213,14 @@
   color: #ffffff;
 }
 .desc-title {
-  /* [수정] clamp를 사용하여 화면 너비에 따라 14px ~ 24px 사이로 자연스럽게 변화 */
-  font-size: clamp(0.875rem, 1.1vw, 1.5rem);
-  margin-bottom: 1.5vh;
+  /* clamp 값 15% 축소 */
+  font-size: clamp(0.75rem, 0.95vw, 1.3rem); /* clamp(0.875rem, 1.1vw, 1.5rem) -> 축소 */
+  margin-bottom: 1.2vh; /* 1.5vh -> 1.2vh */
   line-height: 1.4;
 }
 .desc-sub {
-  /* [수정] clamp를 사용하여 화면 너비에 따라 10px ~ 14px 사이로 자연스럽게 변화 */
-  font-size: clamp(0.625rem, 0.7vw, 0.875rem);
+  /* clamp 값 15% 축소 */
+  font-size: clamp(0.55rem, 0.6vw, 0.75rem); /* clamp(0.625rem, 0.7vw, 0.875rem) -> 축소 */
   color: #aaaaaa;
   line-height: 1.4;
 }
@@ -231,7 +231,7 @@
   left: 0;
   width: 100%;
   background-color: #000;
-  padding: 1.5vh 0;
+  padding: 1.2vh 0; /* 1.5vh -> 1.2vh */
   overflow: hidden;
   z-index: 50; 
   border-top: 1px solid #222;
@@ -245,10 +245,10 @@
 }
 
 .ticker-content span {
-  font-size: 0.9rem;
+  font-size: 0.75rem; /* 0.9rem -> 0.75rem */
   font-weight: 400;
   color: #ffffff;
-  margin-right: 16px;
+  margin-right: 14px; /* 16px -> 14px */
   display: inline-block;
 }
 
@@ -280,62 +280,61 @@
 
   .hero-content-wrapper {
     width: 100%;
-    height: 100vh; /* 모바일 화면 꽉 채우기 */
+    height: 100vh;
     position: relative;
     padding: 0;
     box-sizing: border-box;
   }
 
-  /* [1] 텍스트 로고 위치 및 크기 조정 (상, 중, 하 균등 분할) */
+  /* [1] 텍스트 로고 위치 및 크기 조정 (모바일도 15% 축소 적용) */
   
   /* Group 1: ONE, TEAM (상단) */
   .text-group.group-1 {
-    top: 15%; /* 화면 위에서 15% 지점 */
+    top: 15%;
   }
   .one-top {
-    width: 25%;  /* 크기 확대 */
+    width: 21%; /* 25% -> 21% */
     left: 10%;
   }
   .team {
-    width: 35%;  /* 크기 확대 */
+    width: 30%; /* 35% -> 30% */
     left: 60%;
   }
 
   /* Group 2: ONE (중단) */
   .text-group.group-2 {
-    top: 48%; /* 화면 중앙 약간 아래 */
+    top: 48%;
   }
   .one-bottom {
-    width: 22%;
+    width: 19%; /* 22% -> 19% */
     left: 10%;
   }
 
   /* Group 3: GOAL (하단) */
   .text-group.group-3 {
-    top: 48%; /* 화면 하단 */
-    bottom: auto; /* bottom 속성 대신 top으로 통일 */
+    top: 48%;
+    bottom: auto;
   }
   .goal {
-    width: 35%;
+    width: 30%; /* 35% -> 30% */
     left: 60%;
-    transform: translate(-50%, -50%); /* 중앙 정렬 유지 */
+    transform: translate(-50%, -50%);
   }
 
-  /* 텍스트 공통 스타일 */
   .layer-text.animate-in .text-svg {
-    transform: translate(0, -50%); /* 모바일에서도 수직 중앙 정렬 유지 */
+    transform: translate(0, -50%);
   }
 
-  /* [2] 사다리꼴 마스크 이미지 위치 조정 (로고 뒤편 배치) */
+  /* [2] 사다리꼴 마스크 이미지 위치 조정 */
   .layer-images-masks {
     display: block;
-    opacity: 0.6; /* 가독성 위해 투명도 조절 */
+    opacity: 0.6;
     z-index: 1;
   }
 
   .stripe-mask {
-    width: 100%; /* 모바일에서는 꽉 차게 */
-    height: 15%; /* 높이 확보 */
+    width: 100%;
+    height: 13%; /* 15% -> 13% */
   }
 
   /* Mask 1: 상단 로고와 정렬 */
@@ -343,7 +342,7 @@
     top: 12%;
     left: 0;
     width: 90%;
-    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); /* 모바일에 맞게 기울기 조정 */
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
   }
 
   /* Mask 2: 중단 로고와 정렬 */
@@ -351,7 +350,7 @@
     top: 45%;
     left: 0;
     width: 100%;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* 직사각형에 가깝게 */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   /* Mask 3: 하단 로고와 정렬 */
@@ -366,7 +365,7 @@
   .layer-description {
     display: block;
     position: absolute;
-    bottom: 2rem; /* 티커 위 공간 확보 */
+    bottom: 2rem;
     left: 0;
     width: 100%;
     text-align: center;
@@ -374,8 +373,8 @@
     z-index: 20;
   }
   
-  .desc-title { font-size: 1rem; }
-  .desc-sub { font-size: 0.75rem; }
+  .desc-title { font-size: 0.85rem; } /* 1rem -> 0.85rem */
+  .desc-sub { font-size: 0.65rem; } /* 0.75rem -> 0.65rem */
 
   /* 티커 고정 */
   .bottom-ticker {
