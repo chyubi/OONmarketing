@@ -2,8 +2,8 @@ export const jobList = [
   {
     id: 1,
     type: "Office assistant",
-    title: "사무보조",
-    deadline: "상시채용",
+    title: "사무보조(채용마감)",
+    deadline: "채용마감",
     description: "OON의 세부적인 업무를 담당해주실 인재를 구합니다.",
     //주요업무
     responsibilities: [
@@ -22,7 +22,7 @@ export const jobList = [
   {
     id: 2,
     type: "Web Designer",
-    title: "웹 디자이너",
+    title: "웹 디자이너(상시채용)",
     deadline: "2026.03.31",
     description:
       "브랜드의 가치를 시각적으로 전달할 크리에이티브 디자이너를 모십니다.",

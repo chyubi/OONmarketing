@@ -87,28 +87,6 @@ export default function Contact() {
             />
           </svg>
         </button>
-
-        {/* 검정 버튼: 채용 페이지로 이동 */}
-        <button
-          className="circle-btn btn-black"
-          onClick={() => navigate("/recruitment")}
-          title="채용공고 확인하기"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              d="M5 12H19M19 12L12 5M19 12L12 19"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
       </div>
     </section>
   );

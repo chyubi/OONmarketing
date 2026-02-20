@@ -53,7 +53,7 @@
 .hero-content-wrapper {
   position: relative;
   width: 72%; /* 85% -> 72% */
-  height: 55%; /* 64% -> 55% */
+  height: 60%; /* 64% -> 55% */
   z-index: 10;
 }
 
@@ -64,7 +64,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; 
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -80,7 +80,7 @@
   height: 200%;
   object-fit: cover;
   position: absolute;
-  top: -35%;
+  top: -50%;
   left: -50%;
   transition: transform 0.08s linear;
   will-change: transform;
@@ -88,9 +88,9 @@
 
 .mask-1 {
   top: 15%;
-  left: 20%;
-  width: 47%; /* 55% -> 47% */
-  height: 17%; /* 20% -> 17% */
+  left: 17%;
+  width: 58%; /* 55% -> 47% */
+  height: 15%; /* 20% -> 17% */
 }
 .mask-1 .parallax-bg {
   transform: translate(
@@ -101,8 +101,8 @@
 
 .mask-2 {
   top: 40%;
-  left: 20%;
-  width: 68%; /* 80% -> 68% */
+  left: 17%;
+  width: 82.5%; /* 80% -> 68% */
   height: 15%; /* 18% -> 15% */
   clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
@@ -116,13 +116,13 @@
 .mask-3 {
   top: 65%;
   left: 0%;
-  width: 31%; /* 36% -> 31% */
-  height: 17%; /* 20% -> 17% */
+  width: 76%; /* 36% -> 31% */
+  height: 15%; /* 20% -> 17% */
 }
 .mask-3 .parallax-bg {
   transform: translate(
-    calc(var(--mouse-x) * -90px),
-    calc(var(--mouse-y) * -60px)
+    calc(var(--mouse-x) * -40px),
+    calc(var(--mouse-y) * -30px)
   );
 }
 
@@ -133,7 +133,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 5; 
+  z-index: 5;
   pointer-events: none;
 }
 
@@ -143,19 +143,19 @@
   height: 0;
 }
 .group-1 {
-  top: 25%;
+  top: 23.5%;
 }
 .group-2 {
-  top: 49%;
+  top: 47.4%;
 }
 .group-3 {
-  bottom: 25%;
+  bottom: 27.4%;
 }
 
 /* --- 텍스트 로고 스타일 --- */
 .text-svg {
   height: auto;
-  opacity: 0; 
+  opacity: 0;
   transition:
     transform cubic-bezier(0.22, 1, 0.36, 1),
     opacity ease-out;
@@ -166,7 +166,7 @@
   position: absolute;
   left: 0%;
   width: 16%; /* 19% -> 16% */
-  transform: translate(20%, -70%); 
+  transform: translate(20%, -70%);
   transition-duration: var(--speed-one-top);
 }
 
@@ -175,7 +175,7 @@
   position: absolute;
   left: 76%;
   width: 24%; /* 28% -> 24% */
-  transform: translate(-20%, -50%); 
+  transform: translate(-20%, -50%);
   transition-duration: var(--speed-team);
 }
 
@@ -183,24 +183,24 @@
 .one-bottom {
   position: absolute;
   left: 0%;
-  width: 14.5%; /* 17% -> 14.5% */
-  transform: translate(15%, -50%); 
+  width: 16%; /* 17% -> 14.5% */
+  transform: translate(15%, -50%);
   transition-duration: var(--speed-one-bottom);
 }
 
 /* 4. GOAL (하단) */
 .goal {
   position: absolute;
-  left: 50%;
+  left: 76%;
   width: 24%; /* 28% -> 24% */
-  transform: translate(-15%, -50%); 
+  transform: translate(-15%, -50%);
   transition-duration: var(--speed-goal);
 }
 
 /* --- [애니메이션 실행] --- */
 .layer-text.animate-in .text-svg {
   opacity: 1;
-  transform: translate(0, -50%); 
+  transform: translate(0, -50%);
 }
 
 /* --- 기타 요소 (PC 반응형 수정) --- */
@@ -214,13 +214,21 @@
 }
 .desc-title {
   /* clamp 값 15% 축소 */
-  font-size: clamp(0.75rem, 0.95vw, 1.3rem); /* clamp(0.875rem, 1.1vw, 1.5rem) -> 축소 */
+  font-size: clamp(
+    0.75rem,
+    0.95vw,
+    1.3rem
+  ); /* clamp(0.875rem, 1.1vw, 1.5rem) -> 축소 */
   margin-bottom: 1.2vh; /* 1.5vh -> 1.2vh */
   line-height: 1.4;
 }
 .desc-sub {
   /* clamp 값 15% 축소 */
-  font-size: clamp(0.55rem, 0.6vw, 0.75rem); /* clamp(0.625rem, 0.7vw, 0.875rem) -> 축소 */
+  font-size: clamp(
+    0.55rem,
+    0.6vw,
+    0.75rem
+  ); /* clamp(0.625rem, 0.7vw, 0.875rem) -> 축소 */
   color: #aaaaaa;
   line-height: 1.4;
 }
@@ -228,12 +236,12 @@
 .bottom-ticker {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 0%;
   width: 100%;
   background-color: #000;
   padding: 1.2vh 0; /* 1.5vh -> 1.2vh */
   overflow: hidden;
-  z-index: 50; 
+  z-index: 50;
   border-top: 1px solid #222;
   white-space: nowrap;
 }
@@ -251,16 +259,14 @@
   margin-right: 14px; /* 16px -> 14px */
   display: inline-block;
 }
-
 @keyframes scroll-left-to-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(-10%);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(100%);
   }
 }
-
 /* --- 반응형 (모바일 구조 및 높이 조정) --- */
 @media (max-width: 768px) {
   .hero-section {
@@ -287,7 +293,7 @@
   }
 
   /* [1] 텍스트 로고 위치 및 크기 조정 (모바일도 15% 축소 적용) */
-  
+
   /* Group 1: ONE, TEAM (상단) */
   .text-group.group-1 {
     top: 15%;
@@ -365,16 +371,20 @@
   .layer-description {
     display: block;
     position: absolute;
-    bottom: 2rem;
+    bottom: 3rem;
     left: 0;
     width: 100%;
     text-align: center;
-    padding: 0 20px;
+    padding: 10 20px;
     z-index: 20;
   }
-  
-  .desc-title { font-size: 0.85rem; } /* 1rem -> 0.85rem */
-  .desc-sub { font-size: 0.65rem; } /* 0.75rem -> 0.65rem */
+
+  .desc-title {
+    font-size: 0.85rem;
+  } /* 1rem -> 0.85rem */
+  .desc-sub {
+    font-size: 0.65rem;
+  } /* 0.75rem -> 0.65rem */
 
   /* 티커 고정 */
   .bottom-ticker {

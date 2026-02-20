@@ -36,10 +36,8 @@ export default function Contact() {
                     backgroundImage: `url(${PartnerImg})`,
                     cursor: "pointer",
                   }}
-                  // 클릭 시 메일 보내기 창 열기 (필요 시 수정 가능)
-                  onClick={() =>
-                    (window.location.href = "mailto:contact@oon-marketing.com")
-                  }
+                  // ★★★ [수정] 메일 링크(mailto) 대신 페이지 이동으로 변경 ★★★
+                  onClick={() => navigate("/partner-inquiry")}
                 >
                   <div className="card-overlay"></div>
                   <div className="card-text-wrapper">

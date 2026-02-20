@@ -3,8 +3,7 @@ import "./Partners.css";
 
 import shoppingLiveLogo from "../../../assets/images/Partners/쇼핑LIVE.svg";
 
-// [참고] PDF를 로컬에서 import 하려면 아래 주석을 해제하고 경로를 맞춰주세요.
-// import oonIntroPdf from "../../../assets/pdf/ONN 기업소개서.pdf";
+import oonIntroPdf from "../../../assets/pdf/기업소개서.pdf";
 
 import liveVideo from "../../../assets/parthers/마라도푸드_물회AI라이브.mp4";
 
@@ -20,10 +19,10 @@ export default function Partners() {
 
   const PHONE_NUMBER = "010-9222-9265";
   const KAKAO_LINK = "https://open.kakao.com/o/sFer3Wfi";
-  
+
   // 구글 드라이브 링크
-  const GOOGLE_DRIVE_LINK =
-    "https://drive.google.com/file/d/1oZ0U_fsFurTe3xP3w7VPwJUxGddsj6oo/view?usp=sharing";
+  // const GOOGLE_DRIVE_LINK =
+  // "https://drive.google.com/file/d/1dAvwIq5gH6lgluXtKrddnUHWLAdacf4-/view?usp=sharing";
 
   // ★★★ [수정] FAQ 데이터 (이미지 관련 속성 제거) ★★★
   const faqData = [
@@ -115,11 +114,11 @@ export default function Partners() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? features.length - 1 : prev - 1));
   };
-  
-  // PDF 열기 함수
+
   const handleOpenPdf = (e) => {
     e.preventDefault();
-    window.open(GOOGLE_DRIVE_LINK, "_blank");
+    // 구글 드라이브 링크 대신 직접 import한 PDF 파일을 엽니다.
+    window.open(oonIntroPdf, "_blank");
   };
 
   const handleCall = () => {
@@ -196,11 +195,7 @@ export default function Partners() {
             <p className="intro-caption">
               OON의 기술과 노하우를 한 눈에 확인하세요.
             </p>
-            <a 
-              href="#intro" 
-              className="intro-link-btn" 
-              onClick={handleOpenPdf}
-            >
+            <a href="#intro" className="intro-link-btn" onClick={handleOpenPdf}>
               <span className="btn-text">기업 소개서 확인하기</span>
               <span className="btn-icon">→</span>
             </a>

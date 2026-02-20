@@ -66,7 +66,7 @@
 }
 
 .partners-right {
-  padding-top: 10px; /* 8px -> 10px */
+  padding-top: 41px; /* 8px -> 10px */
   opacity: 0;
   transform: translateX(70px);
   transition:
@@ -132,14 +132,15 @@
   transition: color 0.4s ease;
 }
 
-.btn-text, .btn-icon {
+.btn-text,
+.btn-icon {
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
 }
 
 .intro-link-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -194,7 +195,7 @@
   width: 100%;
 }
 .faq-title {
-  font-size: 1.0rem; /* 0.95rem -> 1.0rem */
+  font-size: 1rem; /* 0.95rem -> 1.0rem */
   font-weight: 800;
   margin-bottom: 12px; /* 10px -> 12px */
   color: #111;
@@ -392,7 +393,7 @@
   animation: fadeInUp 0.5s ease;
 }
 .modal-headline {
-  font-size: 1.0rem; /* 0.95rem -> 1.0rem */
+  font-size: 1rem; /* 0.95rem -> 1.0rem */
   font-weight: 800;
   color: #111;
   margin: 0;
@@ -462,17 +463,17 @@
     flex: none;
   }
   .partners-headline {
-    font-size: 2.0rem; /* 1.9rem -> 2.0rem */
+    font-size: 2rem; /* 1.9rem -> 2.0rem */
   }
   .faq-section {
     margin-top: 30px;
   }
-  
+
   /* 태블릿에서 이미지 높이 증가 */
   .slide-media-area {
     height: 400px; /* 260px -> 400px */
   }
-  
+
   .slider-wrapper {
     min-height: auto;
   }
@@ -489,7 +490,7 @@
   .partners-headline {
     font-size: 1.7rem; /* 1.5rem -> 1.7rem */
   }
-  
+
   .intro-link-btn {
     width: 300px;
     max-width: 400px;
@@ -503,12 +504,12 @@
   .slide-media-area {
     height: 580px; /* 210px -> 320px */
   }
-  
+
   /* 텍스트와 이미지 사이 간격 */
   .slider-content {
     gap: 20px;
   }
-  
+
   /* 컨트롤러 간격 */
   .slider-controls {
     margin-top: 20px;

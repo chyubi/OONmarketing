@@ -102,8 +102,16 @@ export default function Hero() {
             <span>ONE TEAM, ONE GOAL · OON marketing</span>
             <span>ONE TEAM, ONE GOAL · OON marketing</span>
             <span>ONE TEAM, ONE GOAL · OON marketing</span>
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
           </div>
           <div className="ticker-content">
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
+            <span>ONE TEAM, ONE GOAL · OON marketing</span>
             <span>ONE TEAM, ONE GOAL · OON marketing</span>
             <span>ONE TEAM, ONE GOAL · OON marketing</span>
             <span>ONE TEAM, ONE GOAL · OON marketing</span>
