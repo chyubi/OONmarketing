@@ -107,27 +107,27 @@
     height: 80px;
   }
 
-  /* [수정] 모바일 메뉴 버튼 스타일 (크기 키움) */
+  /* 모바일 메뉴 버튼 스타일 (버튼 크기 유지) */
   .mobile-menu-btn {
     display: block;
-    width: 40px;   /* 30px -> 40px로 확장 */
-    height: 40px;  /* 30px -> 40px로 확장 */
-    padding: 6px;  /* 내부 여백 추가 */
+    width: 40px;
+    height: 40px;
+    padding: 6px;
   }
 
-  /* [수정] 드롭다운 메뉴 스타일 */
+  /* [수정] 모바일 드롭다운 메뉴 크기 및 간격 조정 */
   .header-nav {
     position: absolute;
     top: 80px;
     right: 0;
     width: 100%;
-    max-width: 250px;
+    max-width: 320px; /* [수정] 메뉴판 너비 확장 (250px -> 320px) */
     background-color: rgba(0, 0, 0, 0.95);
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    padding: 25px;
-    display: none; /* 기본 숨김 */
+    gap: 30px;       /* [수정] 메뉴 아이템 간 간격 증가 (20px -> 30px) */
+    padding: 40px;    /* [수정] 내부 여백 증가로 메뉴판 크기 키움 (25px -> 40px) */
+    display: none;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
