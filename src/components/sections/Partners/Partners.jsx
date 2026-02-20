@@ -2,16 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Partners.css";
 
 import shoppingLiveLogo from "../../../assets/images/Partners/쇼핑LIVE.svg";
-import tempImage1 from "../../../assets/images/Partners/쇼핑LIVE.svg";
 
 // [참고] PDF를 로컬에서 import 하려면 아래 주석을 해제하고 경로를 맞춰주세요.
 // import oonIntroPdf from "../../../assets/pdf/ONN 기업소개서.pdf";
 
 import liveVideo from "../../../assets/parthers/마라도푸드_물회AI라이브.mp4";
-import liveImg1 from "../../../assets/parthers/라이브이미지1.png";
-import liveImg2 from "../../../assets/parthers/라이브이미지2.png";
-import liveImg3 from "../../../assets/parthers/라이브이미지3.png";
-import liveImg4 from "../../../assets/parthers/라이브이미지4.png";
 
 export default function Partners() {
   const sectionRef = useRef(null);
@@ -20,19 +15,17 @@ export default function Partners() {
 
   // 우측 슬라이더 현재 인덱스
   const [currentSlide, setCurrentSlide] = useState(0);
-  // 내부 이미지 슬라이드쇼용 인덱스
-  const [subSlideIndex, setSubSlideIndex] = useState(0);
   // FAQ 아코디언 상태
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   const PHONE_NUMBER = "010-9222-9265";
   const KAKAO_LINK = "https://open.kakao.com/o/sFer3Wfi";
   
-  // 구글 드라이브 링크 (기존 로직 유지)
+  // 구글 드라이브 링크
   const GOOGLE_DRIVE_LINK =
     "https://drive.google.com/file/d/1oZ0U_fsFurTe3xP3w7VPwJUxGddsj6oo/view?usp=sharing";
 
-  // ★★★ [수정] FAQ 데이터 ★★★
+  // ★★★ [수정] FAQ 데이터 (이미지 관련 속성 제거) ★★★
   const faqData = [
     {
       q: "제가 뭘 해야 할까요?",
@@ -77,39 +70,27 @@ export default function Partners() {
     },
   ];
 
-  // 슬라이더 데이터
+  // 슬라이더 텍스트 데이터 (이미지는 하나로 고정하므로 미디어 속성 제거)
   const features = [
     {
       id: 1,
       title: "대기업급 진행",
       desc: "AI 쇼호스트 + 자동 음성으로\n일관된 톤과 완성도의 방송을 구현합니다.\n사람 컨디션에 흔들리지 않습니다.",
-      media: liveVideo,
-      isVideo: true,
-      isSlideshow: false,
     },
     {
       id: 2,
       title: "반복 편성",
       desc: "한 번 세팅하면\n주간/월간 편성으로 꾸준히 송출합니다.\n'한 번 하고 끝'이 아니라, 운영됩니다.",
-      media: [liveImg1, liveImg2, liveImg3, liveImg4],
-      isVideo: false,
-      isSlideshow: true,
     },
     {
       id: 3,
       title: "운영 효율",
       desc: "촬영·섭외·스튜디오 부담을 줄이고\n준비 시간을 최소화합니다.\n소상공인도 지속 가능한 구조를 만듭니다.",
-      media: tempImage1,
-      isVideo: false,
-      isSlideshow: false,
     },
     {
       id: 4,
       title: "매출 최적화",
       desc: "방송 전환 데이터와 함께\n소재/구성/상품 설명을 개선합니다.\n콘텐츠-광고-리포트 루프에 연결됩니다.",
-      media: tempImage1,
-      isVideo: false,
-      isSlideshow: false,
     },
   ];
 
@@ -126,20 +107,7 @@ export default function Partners() {
     };
   }, []);
 
-  useEffect(() => {
-    let interval;
-    if (features[currentSlide].isSlideshow) {
-      interval = setInterval(() => {
-        setSubSlideIndex(
-          (prev) => (prev + 1) % features[currentSlide].media.length,
-        );
-      }, 1000);
-    }
-    return () => {
-      clearInterval(interval);
-      setSubSlideIndex(0);
-    };
-  }, [currentSlide]);
+  // 내부 슬라이드쇼 관련 useEffect는 삭제했습니다.
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % features.length);
@@ -148,7 +116,7 @@ export default function Partners() {
     setCurrentSlide((prev) => (prev === 0 ? features.length - 1 : prev - 1));
   };
   
-  // PDF 열기 함수 (구글 드라이브 링크 사용)
+  // PDF 열기 함수
   const handleOpenPdf = (e) => {
     e.preventDefault();
     window.open(GOOGLE_DRIVE_LINK, "_blank");
@@ -223,7 +191,7 @@ export default function Partners() {
             WITH <span className="highlight">AI LIVE</span> COMMERCE
           </h2>
 
-          {/* [수정] 기업 소개서 섹션 (문구 + 디자인 변경) */}
+          {/* 기업 소개서 섹션 */}
           <div className="intro-section">
             <p className="intro-caption">
               OON의 기술과 노하우를 한 눈에 확인하세요.
@@ -298,7 +266,7 @@ export default function Partners() {
         <div className={`partners-right ${isVisible ? "animate-left" : ""}`}>
           <div className="slider-wrapper">
             <div className="slider-content">
-              {/* 텍스트 영역 */}
+              {/* 텍스트 영역 - 슬라이드에 따라 변경됨 */}
               <div className="slide-text-area">
                 <h3 className="feature-title">{currentFeature.title}</h3>
                 <p className="feature-desc">
@@ -311,32 +279,18 @@ export default function Partners() {
                 </p>
               </div>
 
-              {/* 미디어(이미지/영상) 영역 */}
+              {/* 미디어(이미지/영상) 영역 - 하나로 고정됨 */}
               <div className="slide-media-area">
                 <div className="media-placeholder">
-                  {currentFeature.isVideo ? (
-                    <video
-                      src={currentFeature.media}
-                      className="slide-img"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    />
-                  ) : currentFeature.isSlideshow ? (
-                    <img
-                      key={subSlideIndex}
-                      src={currentFeature.media[subSlideIndex]}
-                      alt="Slideshow"
-                      className="slide-img slideshow-fade"
-                    />
-                  ) : (
-                    <img
-                      src={currentFeature.media}
-                      alt="Slide Media"
-                      className="slide-img"
-                    />
-                  )}
+                  {/* 고정된 비디오 영상 사용 */}
+                  <video
+                    src={liveVideo}
+                    className="slide-img"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
                 </div>
               </div>
             </div>
