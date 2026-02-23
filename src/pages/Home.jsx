@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import Header from "../components/common/Header/Header";
@@ -12,27 +12,37 @@ import Reviews from "../components/sections/Reviews/Reviews";
 import Footer from "../components/common/Footer/Footer";
 import Footer2 from "../components/common/Footer/Footer2";
 import LoadingScreen from "../components/common/LoadingScreen/LoadingScreen";
+
 import "./Home.css"; // CSS 파일 import 확인
 
 export default function Home() {
   const { hash } = useLocation();
 
+  // ★ 로딩 상태 관리 (초기값 true: 사이트 접속 시 로딩화면 켬)
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    if (hash) {
-      const targetId = hash.replace("#", "");
-      const element = document.getElementById(targetId);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth", block: "start" }); // block: "start"가 스티키 스크롤에 더 적합
-        }, 100);
+    // 로딩이 끝난 상태(!isLoading)일 때만 해시 스크롤 이동 로직 실행
+    if (!isLoading) {
+      if (hash) {
+        const targetId = hash.replace("#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth", block: "start" }); // block: "start"가 스티키 스크롤에 더 적합
+          }, 100);
+        }
+      } else {
+        window.scrollTo(0, 0);
       }
-    } else {
-      window.scrollTo(0, 0);
     }
-  }, [hash]);
+  }, [hash, isLoading]); // 의존성 배열에 isLoading 추가
 
   return (
     <div className="home-container">
+      {/* ★ 로딩 화면: isLoading이 true일 때만 화면을 덮음 */}
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+
       {/* Header를 fixed-header 클래스로 감싸서 항상 최상단에 고정 */}
       <div className="fixed-header">
         <Header />
@@ -46,7 +56,6 @@ export default function Home() {
 
         {/* 2. Services: 위로 올라와서 Hero를 덮음 */}
         <section id="services" className="sticky-section">
-          {" "}
           <Services />
         </section>
 
