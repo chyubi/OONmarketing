@@ -11,7 +11,7 @@ import Contact from "../components/sections/Contact/Contact";
 import Reviews from "../components/sections/Reviews/Reviews";
 import Footer from "../components/common/Footer/Footer";
 import Footer2 from "../components/common/Footer/Footer2";
-
+import LoadingScreen from "../components/common/LoadingScreen/LoadingScreen";
 import "./Home.css"; // CSS 파일 import 확인
 
 export default function Home() {

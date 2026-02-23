@@ -233,13 +233,14 @@
   line-height: 1.4;
 }
 
+/* --- 하단 무한 롤링 티커 --- */
 .bottom-ticker {
   position: absolute;
   bottom: 0;
-  left: 0%;
+  left: 0;
   width: 100%;
   background-color: #000;
-  padding: 1.2vh 0; /* 1.5vh -> 1.2vh */
+  padding: 1.2vh 0;
   overflow: hidden;
   z-index: 50;
   border-top: 1px solid #222;
@@ -248,23 +249,37 @@
 
 .ticker-track {
   display: flex;
-  width: fit-content;
-  animation: scroll-left-to-right 80s linear infinite;
+  /* fit-content 대신 max-content를 써야 내부 요소가 절대 찌그러지지 않습니다 */
+  width: max-content;
+  /* 80초는 너무 길어서 멈춰있는 것처럼 보일 수 있으니 40초 정도로 조절 (원하시면 숫자 변경 가능) */
+  animation: scroll-left-to-right 40s linear infinite;
+}
+
+/* ★ 추가: 텍스트 뭉치 2개가 절대 줄어들지 않도록 고정 */
+.ticker-content {
+  display: flex;
+  flex-shrink: 0;
 }
 
 .ticker-content span {
-  font-size: 0.75rem; /* 0.9rem -> 0.75rem */
+  font-size: 0.75rem;
   font-weight: 400;
   color: #ffffff;
-  margin-right: 14px; /* 16px -> 14px */
+  margin-right: 14px;
   display: inline-block;
 }
+
+/* ★ 핵심: 무한 루프 애니메이션 좌표 수정 (좌 -> 우 방향) */
 @keyframes scroll-left-to-right {
   0% {
-    transform: translateX(-10%);
+    transform: translateX(
+      -50%
+    ); /* 시작할 때 두 번째 텍스트 뭉치 위치에서 시작 */
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(
+      0%
+    ); /* 오른쪽으로 이동하다가 첫 번째 뭉치 위치가 되면 다시 0%로 티 안 나게 순간이동 */
   }
 }
 /* --- 반응형 (모바일 구조 및 높이 조정) --- */
