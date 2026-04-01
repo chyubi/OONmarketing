@@ -105,8 +105,15 @@
   padding-bottom: 40px;
   margin-bottom: 40px;
   border-bottom: 1px solid #eee;
-}
 
+  /* 밑줄 제거 및 기본 색상 고정 (보라색 방지) */
+  text-decoration: none !important;
+  color: #111 !important;
+  cursor: pointer;
+
+  /* 모바일에서 터치했을 때 번쩍거리는 효과 제거 */
+  -webkit-tap-highlight-color: transparent;
+}
 .news-text-group {
   flex: 1;
   padding-right: 40px;
@@ -117,6 +124,23 @@
   font-weight: 800;
   margin-bottom: 15px;
   line-height: 1.4;
+  transition: color 0.2s ease; /* 색상 변경을 부드럽게 */
+}
+/* [추가] 뉴스 타이틀 링크 스타일 */
+.news-title a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 부모 색상(검정) 상속 */
+  transition: color 0.3s ease;
+}
+
+.news-item:hover .news-title,
+.news-item:active .news-title {
+  color: #0048fb !important; /* 브랜드 컬러인 파란색 */
+}
+
+/* (선택) 마우스 올렸을 때 사진 살짝 확대되는 세련된 효과 */
+.news-item:hover .thumb-img {
+  transform: scale(1.05);
 }
 .news-desc {
   font-size: 1rem;

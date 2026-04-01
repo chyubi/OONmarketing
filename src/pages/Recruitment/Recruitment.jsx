@@ -15,7 +15,6 @@ export default function Recruitment() {
 
   return (
     <div className="recruitment-page">
-      <Header />
       <main className="recruitment-container">
         {/* 1. 상단 네비게이션 & 타이틀 */}
         <div className="recruitment-header">
@@ -23,8 +22,7 @@ export default function Recruitment() {
             홈 &gt; <span className="current">인재채용</span>
           </div>
           <div className="title-row">
-            <button className="back-btn" onClick={() => navigate(-1)}>
-              {/* 뒤로가기 화살표 아이콘 */}
+            <button className="back-btn" onClick={() => navigate("/contact")}>
               <svg
                 width="32"
                 height="32"
@@ -144,7 +142,7 @@ export default function Recruitment() {
             </div>
             <div className="info-row">
               <div className="info-label">문의사항</div>
-              <div className="info-content">010 ) 3323-4447</div>
+              <div className="info-content"> 010-9222-9265</div>
             </div>
             <div className="info-row">
               <div className="info-label">유의사항</div>

@@ -36,10 +36,8 @@ export default function Contact() {
                     backgroundImage: `url(${PartnerImg})`,
                     cursor: "pointer",
                   }}
-                  // 클릭 시 메일 보내기 창 열기 (필요 시 수정 가능)
-                  onClick={() =>
-                    (window.location.href = "mailto:contact@oon-marketing.com")
-                  }
+                  // ★★★ [수정] 메일 링크(mailto) 대신 페이지 이동으로 변경 ★★★
+                  onClick={() => navigate("/partner-inquiry")}
                 >
                   <div className="card-overlay"></div>
                   <div className="card-text-wrapper">
@@ -85,8 +83,8 @@ export default function Contact() {
       </div>
 
       {/* === [아래쪽] 흰색 푸터 영역 === */}
-      <footer className="footer-wrapper">
-        <div className="footer-container">
+      <footer className="footer-contact-wrapper">
+        <div className="footer-contact-container">
           {/* 하단 정보 영역 */}
           <div className="footer-bottom">
             {/* 네비게이션 메뉴 */}
@@ -132,7 +130,7 @@ export default function Contact() {
                 <div className="info-col">
                   <span className="info-label">Tel</span>
                   <span className="info-value">054-454-5777</span>
-                  <span className="info-value">010-3323-4447</span>
+                  <span className="info-value"> 010-9222-9265</span>
                 </div>
               </div>
             </div>

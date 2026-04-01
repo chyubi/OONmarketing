@@ -1,3 +1,5 @@
+//Footer.jsx
+
 import React from "react";
 import { useNavigate } from "react-router-dom"; // navigate 추가
 import "./Footer.css";

@@ -1,0 +1,13 @@
+/* Home.css */
+
+.home-container {
+  /* 기존 코드가 있다면 유지하되 아래 내용을 추가/수정하세요 */
+  width: 100%; /* 절대 100vw를 쓰면 안 됩니다 */
+  max-width: 100%;
+  overflow-x: hidden; /* X축(가로) 삐져나옴 숨김 */
+}
+
+main {
+  width: 100%;
+  overflow-x: hidden;
+}

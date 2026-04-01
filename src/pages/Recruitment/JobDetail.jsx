@@ -20,7 +20,6 @@ export default function JobDetail() {
   if (!job) {
     return (
       <div style={{ padding: "150px 20px", textAlign: "center" }}>
-        <Header />
         <h2>공고를 찾을 수 없습니다.</h2>
         <button
           onClick={() => navigate("/recruitment")}
@@ -34,7 +33,6 @@ export default function JobDetail() {
 
   return (
     <div className="recruitment-page">
-      <Header />
       <main className="recruitment-container" style={{ paddingTop: "150px" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           {/* 상단: 타이틀 및 기본 정보 */}

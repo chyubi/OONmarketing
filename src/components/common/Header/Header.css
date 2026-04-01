@@ -1,39 +1,33 @@
 /* Header.css */
 
-/* 1. 전체 헤더 배경 (수정됨) */
+/* 1. 전체 헤더 배경 */
 .header-wrapper {
-  /* --- [고정 위치 설정] --- */
   position: fixed;
   top: 0;
-  left: 0; /* 기존 중앙 정렬 방식(50%) 제거하고 전체 너비 사용 */
-  width: 100%; /* 화면 꽉 차게 */
-
-  /* [중요] 사다리꼴 이미지(Hero)보다 무조건 위에 오도록 매우 높게 설정 */
+  left: 0;
+  width: 100%;
   z-index: 9999;
-
-  /* 배경색 변경 애니메이션 */
   transition:
     background-color 0.3s ease,
-    box-shadow 0.3s ease;
-  background-color: transparent; /* 기본은 투명 */
-
-  /* 내부 컨텐츠 정렬 */
+    transform 0.3s ease-in-out;
+  background-color: transparent;
   display: flex;
   justify-content: center;
+  transform: translateY(0);
 }
 
-/* [추가] 스크롤 되었을 때 적용될 스타일 */
+.header-wrapper.hidden {
+  transform: translateY(-100%);
+}
+
 .header-wrapper.scrolled {
-  /* 스크롤 내리면 검은색 배경으로 변경 (투명도 살짝 줌) */
   background-color: rgba(0, 0, 0, 0.9);
-  /* 그림자 추가로 컨텐츠와 구분 */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* 2. 컨텐츠 컨테이너 (너비 제한 담당) */
 .header-container {
   width: 100%;
-  max-width: 1920px; /* 여기서 최대 너비를 잡아줌 */
+  max-width: 1920px;
   max-height: 144px;
   min-height: 100px;
   display: flex;
@@ -43,7 +37,6 @@
   box-sizing: border-box;
 }
 
-/* 3. 왼쪽 로고 영역 */
 .header-logo {
   min-width: 100px;
   flex-shrink: 0;
@@ -56,14 +49,12 @@
   cursor: pointer;
 }
 
-/* 4. 오른쪽 네비게이션 영역 */
 .header-nav {
   display: flex;
   align-items: center;
   gap: clamp(20px, 3vw, 40px);
 }
 
-/* 5. 메뉴 아이템 */
 .nav-item {
   background: none;
   border: none;
@@ -84,7 +75,20 @@
   max-height: 24px;
 }
 
-/* --- 📱 반응형 --- */
+/* 모바일 메뉴 토글 버튼 (기본 숨김) */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.mobile-menu-btn svg {
+  fill: #fff;
+}
+
+/* --- 반응형 --- */
 @media (max-width: 1200px) {
   .header-container {
     height: 100px;
@@ -99,29 +103,58 @@
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 0 20px;
+    padding: 0 15px;
     height: 80px;
   }
-  .header-nav {
-    gap: 10px;
-  }
-  .nav-item img {
-    max-height: 16px;
-  }
-}
 
-/* Header.css */
-.header-nav ul {
-  display: flex;
-  list-style: none; /* 리스트 점 제거 */
-  padding: 0;
-  margin: 0;
-  gap: 20px; /* 아이콘 사이 간격 */
-  align-items: center;
+  /* 모바일 메뉴 버튼 스타일 (버튼 크기 유지) */
+  .mobile-menu-btn {
+    display: block;
+    width: 4.5rem;
+    height: 40px;
+    padding: 6px 36px 6px 6px;
+  }
+
+  /* [수정] 모바일 드롭다운 메뉴 크기 및 간격 조정 */
+  .header-nav {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 80%;
+    max-width: 85vw; /* [수정] 메뉴판 너비 확장 (250px -> 320px) */
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px; /* [수정] 메뉴 아이템 간 간격 증가 (20px -> 30px) */
+    padding: 50px; /* [수정] 내부 여백 증가로 메뉴판 크기 키움 (25px -> 40px) */
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    z-index: 9998;
+    border-radius: 0 0 0px 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .header-nav.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-item img {
+    max-height: 20px;
+    width: auto;
+  }
+
+  .header-logo img {
+    height: 28px;
+  }
 }
 
 .sr-only {
-  /* 텍스트를 화면에서는 숨기지만 검색 로봇은 읽을 수 있게 함 (SEO 핵심) */
   position: absolute;
   width: 1px;
   height: 1px;

@@ -26,7 +26,7 @@
 /* 16:9 비율 유지 박스 */
 .aspect-ratio-box {
   width: 100%;
-  max-width: 1920px;
+  max-width: 1630px; /* 1920px -> 1630px (약 15% 축소) */
   aspect-ratio: 16 / 9;
   position: relative;
   display: flex;
@@ -41,7 +41,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  width: 45%;
+  width: 38%; /* 45% -> 38% */
   opacity: 0.8;
 }
 .bg-circle-img {
@@ -52,23 +52,19 @@
 /* 중앙 컨텐츠 래퍼 */
 .hero-content-wrapper {
   position: relative;
-  width: 85%;
-  height: 64%;
+  width: 72%; /* 85% -> 72% */
+  height: 60%; /* 64% -> 55% */
   z-index: 10;
 }
 
-/* === [중요 수정] 레이어 3: 사다리꼴 이미지 마스크 (텍스트보다 뒤로 보냄) === */
-/* 원래 z-index: 3이었으나, 텍스트(z-index: 5)보다 낮게 설정하여 텍스트가 위로 올라오게 함 */
-/* 만약 텍스트가 마스크 '뒤'에서 나오는 연출을 원한다면 이 값을 텍스트보다 높게(예: 10) 설정해야 하지만,
-   지금처럼 '가려지는 문제'를 해결하려면 텍스트를 더 위로 올리거나 위치를 조정해야 합니다.
-   여기서는 텍스트를 가장 위로 올려서 확실히 보이게 처리했습니다. */
+/* 레이어 3: 사다리꼴 이미지 마스크 */
 .layer-images-masks {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* 텍스트(5)보다 낮춤 */
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -80,21 +76,21 @@
 }
 
 .parallax-bg {
-  width: 150%;
-  height: 150%;
+  width: 200%;
+  height: 200%;
   object-fit: cover;
   position: absolute;
-  top: -25%;
-  left: -25%;
+  top: -50%;
+  left: -50%;
   transition: transform 0.08s linear;
   will-change: transform;
 }
 
 .mask-1 {
   top: 15%;
-  left: 20%;
-  width: 55%;
-  height: 18%;
+  left: 17%;
+  width: 58%; /* 55% -> 47% */
+  height: 15%; /* 20% -> 17% */
 }
 .mask-1 .parallax-bg {
   transform: translate(
@@ -105,9 +101,9 @@
 
 .mask-2 {
   top: 40%;
-  left: 20%;
-  width: 80%;
-  height: 18%;
+  left: 17%;
+  width: 82.5%; /* 80% -> 68% */
+  height: 15%; /* 18% -> 15% */
   clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
 .mask-2 .parallax-bg {
@@ -120,24 +116,24 @@
 .mask-3 {
   top: 65%;
   left: 0%;
-  width: 46%;
-  height: 18%;
+  width: 76%; /* 36% -> 31% */
+  height: 15%; /* 20% -> 17% */
 }
 .mask-3 .parallax-bg {
   transform: translate(
-    calc(var(--mouse-x) * -90px),
-    calc(var(--mouse-y) * -60px)
+    calc(var(--mouse-x) * -40px),
+    calc(var(--mouse-y) * -30px)
   );
 }
 
-/* === [중요 수정] 레이어 2: 텍스트 로고 레이어 (가장 앞으로 배치) === */
+/* 레이어 2: 텍스트 로고 레이어 */
 .layer-text {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 5; /* 마스크(2)보다 높게 설정하여 무조건 위에 보이게 함 */
+  z-index: 5;
   pointer-events: none;
 }
 
@@ -147,19 +143,19 @@
   height: 0;
 }
 .group-1 {
-  top: 25%;
+  top: 23.5%;
 }
 .group-2 {
-  top: 49%;
+  top: 47.4%;
 }
 .group-3 {
-  bottom: 25%;
+  bottom: 27.4%;
 }
 
 /* --- 텍스트 로고 스타일 --- */
 .text-svg {
   height: auto;
-  opacity: 0; /* 초기 상태: 투명 */
+  opacity: 0;
   transition:
     transform cubic-bezier(0.22, 1, 0.36, 1),
     opacity ease-out;
@@ -169,8 +165,8 @@
 .one-top {
   position: absolute;
   left: 0%;
-  width: 19%;
-  transform: translate(20%, -70%); /* 초기 위치 */
+  width: 16%; /* 19% -> 16% */
+  transform: translate(20%, -70%);
   transition-duration: var(--speed-one-top);
 }
 
@@ -178,8 +174,8 @@
 .team {
   position: absolute;
   left: 76%;
-  width: 28%;
-  transform: translate(-20%, -50%); /* 초기 위치 */
+  width: 24%; /* 28% -> 24% */
+  transform: translate(-20%, -50%);
   transition-duration: var(--speed-team);
 }
 
@@ -187,102 +183,228 @@
 .one-bottom {
   position: absolute;
   left: 0%;
-  width: 17%;
-  transform: translate(15%, -50%); /* 초기 위치 */
+  width: 16%; /* 17% -> 14.5% */
+  transform: translate(15%, -50%);
   transition-duration: var(--speed-one-bottom);
 }
 
 /* 4. GOAL (하단) */
 .goal {
   position: absolute;
-  left: 50%;
-  width: 28%;
-  transform: translate(-15%, -50%); /* 초기 위치 */
+  left: 76%;
+  width: 24%; /* 28% -> 24% */
+  transform: translate(-15%, -50%);
   transition-duration: var(--speed-goal);
 }
 
 /* --- [애니메이션 실행] --- */
-/* isLoaded가 true가 되면(animate-in 클래스 추가 시) 제자리로 이동하며 나타남 */
 .layer-text.animate-in .text-svg {
   opacity: 1;
-  transform: translate(0, -50%); /* 최종 위치: 제자리 */
+  transform: translate(0, -50%);
 }
 
-/* --- 기타 요소 --- */
+/* --- 기타 요소 (PC 반응형 수정) --- */
 .layer-description {
   position: absolute;
-  right: -5%;
-  bottom: 11.5%;
+  right: -1%;
+  bottom: 0.5%;
   z-index: 20;
   text-align: left;
   color: #ffffff;
 }
 .desc-title {
-  font-size: 0.9vw;
-  margin-bottom: 1.5vh;
+  /* clamp 값 15% 축소 */
+  font-size: clamp(
+    0.75rem,
+    0.95vw,
+    1.3rem
+  ); /* clamp(0.875rem, 1.1vw, 1.5rem) -> 축소 */
+  margin-bottom: 1.2vh; /* 1.5vh -> 1.2vh */
+  line-height: 1.4;
 }
 .desc-sub {
-  font-size: 0.5vw;
+  /* clamp 값 15% 축소 */
+  font-size: clamp(
+    0.55rem,
+    0.6vw,
+    0.75rem
+  ); /* clamp(0.625rem, 0.7vw, 0.875rem) -> 축소 */
   color: #aaaaaa;
+  line-height: 1.4;
 }
 
+/* --- 하단 무한 롤링 티커 --- */
 .bottom-ticker {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: #000;
-  padding: 1.5vh 0;
+  padding: 1.2vh 0;
   overflow: hidden;
-  z-index: 50; /* 가장 위에 */
+  z-index: 50;
   border-top: 1px solid #222;
   white-space: nowrap;
 }
 
 .ticker-track {
   display: flex;
-  width: fit-content;
-  animation: scroll-left-to-right 80s linear infinite;
+  /* fit-content 대신 max-content를 써야 내부 요소가 절대 찌그러지지 않습니다 */
+  width: max-content;
+  /* 80초는 너무 길어서 멈춰있는 것처럼 보일 수 있으니 40초 정도로 조절 (원하시면 숫자 변경 가능) */
+  animation: scroll-left-to-right 40s linear infinite;
+}
+
+/* ★ 추가: 텍스트 뭉치 2개가 절대 줄어들지 않도록 고정 */
+.ticker-content {
+  display: flex;
+  flex-shrink: 0;
 }
 
 .ticker-content span {
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: #ffffff;
-  margin-right: 16px;
+  margin-right: 14px;
   display: inline-block;
 }
 
+/* ★ 핵심: 무한 루프 애니메이션 좌표 수정 (좌 -> 우 방향) */
 @keyframes scroll-left-to-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(
+      -50%
+    ); /* 시작할 때 두 번째 텍스트 뭉치 위치에서 시작 */
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(
+      0%
+    ); /* 오른쪽으로 이동하다가 첫 번째 뭉치 위치가 되면 다시 0%로 티 안 나게 순간이동 */
   }
 }
-
-/* --- 반응형 예외 처리 --- */
+/* --- 반응형 (모바일 구조 및 높이 조정) --- */
 @media (max-width: 768px) {
   .hero-section {
     --mouse-x: 0;
     --mouse-y: 0;
+    height: auto;
+    min-height: 100vh;
+    padding: 0;
   }
-  .text-group {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .layer-description,
-  .layer-images-masks {
-    display: none;
-  }
+
   .aspect-ratio-box {
     width: 100%;
-    height: 100%;
     aspect-ratio: auto;
+    height: auto;
+    min-height: 100vh;
   }
+
   .hero-content-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* [1] 텍스트 로고 위치 및 크기 조정 (모바일도 15% 축소 적용) */
+
+  /* Group 1: ONE, TEAM (상단) */
+  .text-group.group-1 {
+    top: 15%;
+  }
+  .one-top {
+    width: 21%; /* 25% -> 21% */
+    left: 10%;
+  }
+  .team {
+    width: 30%; /* 35% -> 30% */
+    left: 60%;
+  }
+
+  /* Group 2: ONE (중단) */
+  .text-group.group-2 {
+    top: 48%;
+  }
+  .one-bottom {
+    width: 19%; /* 22% -> 19% */
+    left: 10%;
+  }
+
+  /* Group 3: GOAL (하단) */
+  .text-group.group-3 {
+    top: 48%;
+    bottom: auto;
+  }
+  .goal {
+    width: 30%; /* 35% -> 30% */
+    left: 60%;
+    transform: translate(-50%, -50%);
+  }
+
+  .layer-text.animate-in .text-svg {
+    transform: translate(0, -50%);
+  }
+
+  /* [2] 사다리꼴 마스크 이미지 위치 조정 */
+  .layer-images-masks {
+    display: block;
+    opacity: 0.6;
+    z-index: 1;
+  }
+
+  .stripe-mask {
+    width: 100%;
+    height: 13%; /* 15% -> 13% */
+  }
+
+  /* Mask 1: 상단 로고와 정렬 */
+  .mask-1 {
+    top: 12%;
+    left: 0;
     width: 90%;
-    height: 80%;
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+  }
+
+  /* Mask 2: 중단 로고와 정렬 */
+  .mask-2 {
+    top: 45%;
+    left: 0;
+    width: 100%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Mask 3: 하단 로고와 정렬 */
+  .mask-3 {
+    top: 77%;
+    left: 0;
+    width: 80%;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+  }
+
+  /* [3] 설명 텍스트 하단 고정 */
+  .layer-description {
+    display: block;
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10 20px;
+    z-index: 20;
+  }
+
+  .desc-title {
+    font-size: 0.85rem;
+  } /* 1rem -> 0.85rem */
+  .desc-sub {
+    font-size: 0.65rem;
+  } /* 0.75rem -> 0.65rem */
+
+  /* 티커 고정 */
+  .bottom-ticker {
+    position: fixed;
+    bottom: 0;
+    z-index: 50;
   }
 }
